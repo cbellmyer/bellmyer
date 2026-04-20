@@ -27,7 +27,7 @@ disableKinds:
 
 menu:
   main:
-    - name: Experience
+    - name: Experience Log
       url: /experience/
       weight: 5
     # - name: Search
@@ -58,7 +58,7 @@ params:
 
   # disableSpecial1stPost: true
   ShowPostNavLinks: true
-  ShowBreadCrumbs: true
+  ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   ShowAllPagesInArchive: true
   ShowPageNums: true
@@ -68,13 +68,13 @@ params:
   profileMode:
     enabled: true
     title: "Chris Bellmyer"
-    subtitle: "Software Engineer | Professional Portfolio"
+    subtitle: "Wastewater Reclamation Plant Operator III"
     imageUrl: "images/professional-headshot.jpg"
     imageTitle: "Chris Bellmyer"
     imageWidth: 400
     imageHeight: 400
     buttons:
-      - name: View Experience
+      - name: View Experience Log
         url: /experience/
 
   socialIcons:
