@@ -1,0 +1,137 @@
+/* SCADA Dashboard Theme Override for PaperMod */
+
+:root, .dark {
+    /* Core Palette */
+    --theme: #121212; /* Jet Black / Dark Charcoal */
+    --entry: #1a1a1a; /* Slightly lighter for cards/entries */
+    --primary: #cccccc; /* Light Ash Grey text */
+    --secondary: #999999; /* Muted secondary text */
+    --tertiary: #333333; /* Borders and dividers */
+    --content: #cccccc; 
+    --hljs-bg: #0b0b0b; /* Very dark code block background */
+    --code-bg: #1e1e1e;
+    --border: #333333;
+}
+
+/* Base Industrial Dashboard Feel */
+body {
+    /* Adds a very subtle grid overlay reminiscent of tracking/engineering screens */
+    background-image: 
+        linear-gradient(rgba(51, 51, 51, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(51, 51, 51, 0.25) 1px, transparent 1px);
+    background-size: 30px 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Headings - Using the Safety Amber to draw immediate attention */
+h1, h2, h3, h4, h5, h6 {
+    color: #FFC107;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Primary Interactive Accent: Safety Amber */
+a {
+    color: #FFC107;
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #ffda6a;
+    text-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+}
+
+/* Active Menu Items - Industrial active state */
+.menu a.active {
+    color: #FFC107;
+    border-bottom: 2px solid #FFC107;
+    font-weight: bold;
+}
+
+/* Profile Buttons (Dashboard Controls) */
+.profile_inner .buttons .button {
+    background: #1a1a1a;
+    border: 1px solid #FFC107;
+    color: #FFC107;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 2px; /* Hard, industrial edges */
+    transition: all 0.2s ease-in-out;
+    box-shadow: inset 0 0 0 rgba(255, 193, 7, 0);
+}
+
+.profile_inner .buttons .button:hover {
+    background: #FFC107;
+    color: #121212; /* Invert text to black on hover */
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+/* Social Icons Accent */
+.social-icons svg {
+    color: #FFC107;
+}
+
+/* Profile Image Container - Add an "equipment monitor" border */
+.profile-info img {
+    border: 2px solid #FFC107;
+    border-radius: 4px !important; 
+}
+
+/* SCADA Resume / Experience Panels */
+.scada-panel {
+    background-color: #1C2529; /* Dark slate background */
+    border: 1px solid #FFC107; /* Accent border */
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.3), inset 0 0 12px rgba(255, 193, 7, 0.1); /* Glowing terminal box */
+    border-radius: 2px; /* Hard industrial edges */
+    padding: 20px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top 'status' bar for panels to give it a hardware interface feel */
+.scada-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #FFC107;
+    box-shadow: 0 0 10px #FFC107;
+}
+
+.scada-panel h3 {
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.scada-meta {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; /* Terminal monospace */
+    color: #FFC107;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 6px rgba(255, 193, 7, 0.6); /* Glowing terminal text */
+    display: block;
+}
+
+.scada-panel h4.organization {
+    color: var(--primary);
+    margin-top: -8px;
+    margin-bottom: 12px;
+    font-weight: normal;
+}
+
+/* Markdown List Formatting for Experience Blocks */
+.scada-desc ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    color: var(--primary);
+}
+
+.scada-desc li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}

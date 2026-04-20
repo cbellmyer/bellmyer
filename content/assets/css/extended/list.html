@@ -1,0 +1,21 @@
+{{- define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+</header>
+
+<div class="scada-experience-list">
+  {{- /* We use .Pages.ByWeight so you can easily control the order of jobs */ -}}
+  {{- range .Pages.ByWeight }}
+  <div class="scada-panel">
+    <span class="scada-meta">
+      {{ .Params.start_date }} - {{ .Params.end_date }} | {{ .Params.terminal_id }} | {{ .Params.status_code }}
+    </span>
+    <h3>{{ .Title }}</h3>
+    <h4 class="organization">{{ .Params.organization }}</h4>
+    <div class="scada-desc">
+      {{ .Content }}
+    </div>
+  </div>
+  {{- end }}
+</div>
+{{- end }}

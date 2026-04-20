@@ -1,8 +1,8 @@
-# Copilot Instructions for hypercat_me
+# Copilot Instructions for Chris Bellmyer's Portfolio
 
 ## Repository Overview
 
-**hypercat_me** is a static website built with Hugo (v0.156.0+) using the PaperMod theme. It's a small personal portfolio/profile site (37 pages) showcasing a furry character's sona reference sheets and convention information. The site is approximately 66MB when built, with most content being optimized images.
+**bellmyer** is a static website built with Hugo (v0.156.0+) using the PaperMod theme. It serves as a professional portfolio and profile site for Chris Bellmyer.
 
 **Tech Stack:**
 
@@ -14,7 +14,7 @@
 ## Consistency Note
 
 Keep build tooling, SRI scripts, and CI workflow patterns aligned across the
-`hypercat_me`, `felle_me`, and `shutterpaws_pics` repos whenever possible.
+`bellmyer`, `felle_me`, and `shutterpaws_pics` repos whenever possible.
 
 ## Critical Setup Requirements
 
@@ -47,8 +47,6 @@ hugo
 - Takes ~10-11 seconds (first build or clean build)
 - Takes ~50-100ms (incremental builds)
 - Output directory: `public/`
-- Processes 21 images, generates 37 pages
-- **Note:** Minified builds (`hugo --minify`) may encounter JSON errors in some cons pages. This is a known issue with certain content files and does not affect basic builds.
 
 ### Development Server
 
@@ -87,12 +85,9 @@ Clean these artifacts when:
 │   └── default.md               # Template for new content
 ├── assets/
 │   ├── css/extended/            # Custom CSS overrides
-│   └── images/                  # Source images (sona refs, profile)
+│   └── images/                  # Source images (profile)
 ├── content/                     # All site content (Markdown)
-│   ├── cons/                    # Convention information
-│   └── sona/                    # Sona reference sheets
-│       ├── sfw.md
-│       └── nsfw/
+│   └── about/                   # Professional about page
 ├── layouts/
 │   └── shortcodes/
 │       └── myAge.html           # Custom shortcode for age calculation
@@ -114,7 +109,7 @@ Clean these artifacts when:
 
 - **Main config:** `hugo.yaml` (159 lines)
 - **Theme:** hypercat-theme (customized PaperMod - see `themes/hypercat-theme/README.md`)
-- **Base URL:** https://hypercat.me/
+- **Base URL:** https://bellmyer.com/
 - **Profile mode:** Enabled with custom image and social links
 - **Custom shortcode:** `{{< myAge >}}` - calculates age from birthdate (1988-11-02)
 
@@ -208,13 +203,7 @@ Shows Hugo version, Go version, libsass version, libwebp version.
 
 ## Known Issues and Gotchas
 
-1. **Minify Build Errors**
-
-   - Symptoms: JSON parsing errors in cons pages when using `hugo --minify`
-   - Impact: Basic `hugo` command works fine, but minified builds fail
-   - Workaround: Use basic `hugo` command without `--minify` flag
-
-2. **First Build is Slow**
+1. **First Build is Slow**
 
    - First/clean build: ~10 seconds (image processing)
    - Incremental builds: ~50-100ms

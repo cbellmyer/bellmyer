@@ -1,7 +1,7 @@
 # If your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would
 # contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
-baseURL: "https://hypercat.me/"
-title: Hyper
+baseURL: "https://bellmyer.com/"
+title: "Chris Bellmyer"
 copyright: "CC BY-NC 4.0"
 theme: [hypercat-theme]
 
@@ -11,7 +11,7 @@ buildFuture: true
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["posts", "papermod", "cons", "sona", "poses"]
+mainsections: ["posts", "experience"]
 
 minify:
   disableXML: true
@@ -27,18 +27,9 @@ disableKinds:
 
 menu:
   main:
-    - name: Sona
-      url: /sona/
+    - name: Experience
+      url: /experience/
       weight: 5
-    - name: Poses
-      url: /poses/
-      weight: 7
-    - name: Conventions
-      url: /cons/
-      weight: 10
-    - name: Shutterpaws
-      url: https://shutterpaws.pics/
-      weight: 15
     # - name: Search
     #   url: search/
     #   weight: 10
@@ -59,8 +50,10 @@ outputs:
 
 params:
   env: production
-  description: "Hyper"
-  author: Hyper
+  defaultTheme: dark
+  disableThemeToggle: true
+  description: "Chris Bellmyer"
+  author: "Chris Bellmyer"
   # author: ["Me", "You"] # multiple authors
 
   # disableSpecial1stPost: true
@@ -74,49 +67,23 @@ params:
 
   profileMode:
     enabled: true
-    title: hyper
-    subtitle: "{{< myAge >}} | Photographer | Nerd | Big Cat"
-    imageUrl: "images/profile/hyper.png"
-    imageTitle: Hyper
+    title: "Chris Bellmyer"
+    subtitle: "Software Engineer | Professional Portfolio"
+    imageUrl: "images/professional-headshot.jpg"
+    imageTitle: "Chris Bellmyer"
     imageWidth: 400
-    imageHeight: 509
+    imageHeight: 400
     buttons:
-      - name: Photography
-        url: https://photo.felle.me/
-      - name: Furtrack
-        url: https://www.furtrack.com/user/Hyper
+      - name: View Experience
+        url: /experience/
 
   socialIcons:
-    - name: telegram
-      title: Contact on Telegram
-      url: "https://t.me/jordanfelle"
-    - name: bluesky
-      title: Follow on Bluesky
-      url: "https://bsky.app/profile/hypercat.me"
-    - name: kofi
-      title: Support on Ko-Fi
-      url: "https://ko-fi.com/jordanfelle"
-    - name: twitter
-      title: Follow on twitter
-      url: "https://twitter.com/jordanfelle"
-    - name: instagram
-      title: Follow on Instagram
-      url: "https://www.instagram.com/hyper123/"
-    - name: facebook
-      title: Follow on Facebook
-      url: "https://www.facebook.com/hyper123"
-    - name: lastfm
-      title: Follow on Last.fm
-      url: "https://www.last.fm/user/hyper123123"
-    - name: steam
-      title: Follow on Steam
-      url: "https://steamcommunity.com/id/hyper123"
     - name: github
       title: Follow on GitHub
-      url: "https://github.com/jordanfelle"
-    - name: discord
-      title: Join on Discord
-      url: "https://discord.com/users/307919782961872897"
+      url: "https://github.com/bellmyer"
+    - name: linkedin
+      title: Connect on LinkedIn
+      url: "https://linkedin.com/in/bellmyer"
 
   # label:
   # iconSVG: '<svg xmlns="http://www.w3.org/2000/svg" height="25"
