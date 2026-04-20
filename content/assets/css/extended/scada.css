@@ -2,15 +2,15 @@
 
 :root, .dark {
     /* Core Palette */
-    --theme: #121212; /* Jet Black / Dark Charcoal */
-    --entry: #1a1a1a; /* Slightly lighter for cards/entries */
-    --primary: #cccccc; /* Light Ash Grey text */
-    --secondary: #999999; /* Muted secondary text */
-    --tertiary: #333333; /* Borders and dividers */
-    --content: #cccccc; 
-    --hljs-bg: #0b0b0b; /* Very dark code block background */
-    --code-bg: #1e1e1e;
-    --border: #333333;
+    --theme: #121212; /* Dark Charcoal */
+    --primary: #CCCCCC; /* Technical Light Grey */
+    --panel-bg: #1a1a1a;
+    --panel-border: #33424A;
+    
+    /* Status Codes */
+    --status-active: #00FF87; /* Bioluminescent Green */
+    --status-archived: #FFC107; /* Safety Amber */
+    --status-admin: #B388FF; /* Deep Purple */
 }
 
 /* Base Industrial Dashboard Feel */
@@ -25,80 +25,86 @@ body {
 
 /* Headings - Using the Safety Amber to draw immediate attention */
 h1, h2, h3, h4, h5, h6 {
-    color: #FFC107;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: var(--primary);
 }
 
 /* Primary Interactive Accent: Safety Amber */
 a {
-    color: #FFC107;
+    color: var(--status-active);
     transition: all 0.2s ease-in-out;
 }
 
 a:hover {
-    color: #ffda6a;
-    text-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+    color: #33ff9f;
+    text-shadow: 0 0 8px rgba(0, 255, 135, 0.4);
 }
 
 /* Active Menu Items - Industrial active state */
 .menu a.active {
-    color: #FFC107;
-    border-bottom: 2px solid #FFC107;
+    color: var(--status-active);
+    border-bottom: 2px solid var(--status-active);
     font-weight: bold;
 }
 
 /* Profile Buttons (Dashboard Controls) */
 .profile_inner .buttons .button {
     background: #1a1a1a;
-    border: 1px solid #FFC107;
-    color: #FFC107;
+    border: 1px solid var(--status-active);
+    color: var(--status-active);
     text-transform: uppercase;
     font-weight: bold;
     border-radius: 2px; /* Hard, industrial edges */
     transition: all 0.2s ease-in-out;
-    box-shadow: inset 0 0 0 rgba(255, 193, 7, 0);
+    box-shadow: inset 0 0 0 rgba(0, 255, 135, 0);
 }
 
 .profile_inner .buttons .button:hover {
-    background: #FFC107;
+    background: var(--status-active);
     color: #121212; /* Invert text to black on hover */
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 135, 0.3);
 }
 
 /* Social Icons Accent */
 .social-icons svg {
-    color: #FFC107;
+    color: var(--primary);
 }
 
 /* Profile Image Container - Add an "equipment monitor" border */
 .profile-info img {
-    border: 2px solid #FFC107;
+    border: 2px solid var(--panel-border);
     border-radius: 4px !important; 
+}
+
+/* System Overview Blurb */
+.scada-system-overview {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 30px;
+    padding: 15px;
+    background: rgba(51, 66, 74, 0.2);
+    border-left: 4px solid var(--status-active);
+}
+
+/* Pipeline Timeline */
+.scada-experience-list {
+    border-left: 2px solid var(--panel-border);
+    padding-left: 20px;
+    margin-left: 10px;
 }
 
 /* SCADA Resume / Experience Panels */
 .scada-panel {
-    background-color: #1C2529; /* Dark slate background */
-    border: 1px solid #FFC107; /* Accent border */
-    box-shadow: 0 0 8px rgba(255, 193, 7, 0.3), inset 0 0 12px rgba(255, 193, 7, 0.1); /* Glowing terminal box */
-    border-radius: 2px; /* Hard industrial edges */
+    background-color: var(--panel-bg); 
+    border: 1px solid var(--panel-border);
+    border-radius: 4px;
     padding: 20px;
     margin-bottom: 24px;
     position: relative;
     overflow: hidden;
-}
-
-/* Top 'status' bar for panels to give it a hardware interface feel */
-.scada-panel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: #FFC107;
-    box-shadow: 0 0 10px #FFC107;
+    box-shadow: inset 0 0 15px rgba(204, 204, 204, 0.05); /* Subtle internal glow */
 }
 
 .scada-panel h3 {
@@ -107,13 +113,11 @@ a:hover {
 }
 
 .scada-meta {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; /* Terminal monospace */
-    color: #FFC107;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
     font-size: 0.85rem;
     text-transform: uppercase;
     margin-bottom: 8px;
     letter-spacing: 1.5px;
-    text-shadow: 0 0 6px rgba(255, 193, 7, 0.6); /* Glowing terminal text */
     display: block;
 }
 
@@ -128,10 +132,51 @@ a:hover {
 .scada-desc ul {
     margin-top: 10px;
     padding-left: 20px;
+    list-style-type: square; /* System output square bullets */
     color: var(--primary);
 }
 
 .scada-desc li {
     margin-bottom: 8px;
     line-height: 1.5;
+}
+
+/* Color-Coded Status Logic */
+.status-active {
+    border-color: var(--status-active);
+    border-left: 4px solid var(--status-active); /* Thick pipeline block */
+    box-shadow: 0 0 8px rgba(0, 255, 135, 0.2), inset 0 0 12px rgba(0, 255, 135, 0.1);
+}
+.status-active h3, .status-active .scada-meta { color: var(--status-active); text-shadow: 0 0 6px rgba(0, 255, 135, 0.4); }
+
+.status-archived {
+    border-color: var(--status-archived);
+    border-left: 3px solid var(--status-archived); /* Medium pipeline block */
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.15), inset 0 0 12px rgba(255, 193, 7, 0.05);
+}
+.status-archived h3, .status-archived .scada-meta { color: var(--status-archived); text-shadow: 0 0 6px rgba(255, 193, 7, 0.4); }
+
+.status-admin {
+    border-color: var(--status-admin);
+    border-left: 2px solid var(--status-admin); /* Thin pipeline block */
+    box-shadow: 0 0 8px rgba(179, 136, 255, 0.2), inset 0 0 12px rgba(179, 136, 255, 0.1);
+}
+.status-admin h3, .status-admin .scada-meta { color: var(--status-admin); text-shadow: 0 0 6px rgba(179, 136, 255, 0.4); }
+
+/* Pulsing System Upgrade Tag */
+@keyframes pulseAlert {
+    0% { opacity: 1; text-shadow: 0 0 8px var(--status-active); }
+    50% { opacity: 0.5; text-shadow: none; }
+    100% { opacity: 1; text-shadow: 0 0 8px var(--status-active); }
+}
+
+.sys-upgrade {
+    display: inline-block;
+    animation: pulseAlert 2s infinite;
+    font-weight: bold;
+    margin-left: 12px;
+    font-size: 0.85em;
+    border: 1px solid var(--status-active);
+    padding: 2px 6px;
+    border-radius: 2px;
 }
