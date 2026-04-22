@@ -63,6 +63,14 @@ menu:
         font-size: 2rem;
         color: #FFC107;
     }
+    .scada-importance {
+        font-size: 0.85rem;
+        color: var(--secondary, #888);
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px dotted var(--border, #333);
+        line-height: 1.4;
+    }
 </style>
 
 <!-- Modular Web Components -->
@@ -72,32 +80,38 @@ menu:
     <process-calculator
         type="svi"
         title="Sludge Volume Index (SVI)"
-        desc="Calculates the settling characteristics of activated sludge (mL/g).">
+        desc="Calculates the settling characteristics of activated sludge (mL/g)."
+        importance="Crucial for monitoring sludge compaction and identifying biological foaming or bulking trends before they cause solids wash-out.">
     </process-calculator>
     <process-calculator 
         type="fm" 
         title="F/M Ratio" 
-        desc="Calculates the Food-to-Microorganism ratio.">
+        desc="Calculates the Food-to-Microorganism ratio."
+        importance="Guides wasting strategies by balancing incoming BOD load with active biomass inventory, ensuring stable biological treatment efficiency.">
     </process-calculator>
     <process-calculator 
         type="mcrt" 
         title="MCRT (Days)" 
-        desc="Mean Cell Residence Time / Sludge Age calculation.">
+        desc="Mean Cell Residence Time / Sludge Age calculation."
+        importance="Dictates the dominant microorganism populations in the bioreactor; critical for maintaining consistent nitrification and nutrient removal.">
     </process-calculator>
     <process-calculator 
         type="slr" 
         title="Surface Loading Rate" 
-        desc="Calculates the gallons per day per square foot (gpd/sq ft).">
+        desc="Calculates the gallons per day per square foot (gpd/sq ft)."
+        importance="Monitors hydraulic stress on secondary clarifiers to prevent sludge blanket failure and effluent TSS violations during peak flows.">
     </process-calculator>
     <process-calculator 
         type="hrt" 
         title="Hydraulic Retention Time" 
-        desc="Calculates the retention time in hours.">
+        desc="Calculates the retention time in hours."
+        importance="Ensures wastewater maintains adequate contact time with active biomass for complete biological degradation and permit compliance.">
     </process-calculator>
     <process-calculator
         type="dosing"
         title="Chemical Dosing"
-        desc="Calculates chemical dose in pounds per day (lbs/day).">
+        desc="Calculates chemical dose in pounds per day (lbs/day)."
+        importance="Optimizes chemical usage for phosphorus precipitation and solids conditioning, preventing wasteful over-dosing and process toxicity.">
     </process-calculator>
 
 </div>
@@ -137,6 +151,7 @@ class ProcessCalculator extends HTMLElement {
         this.type = this.getAttribute('type');
         this.title = this.getAttribute('title');
         this.desc = this.getAttribute('desc');
+        this.importance = this.getAttribute('importance');
         this.render();
         this.addEventListener('input', this.calculate.bind(this));
     }
@@ -180,11 +195,14 @@ class ProcessCalculator extends HTMLElement {
             `;
         }
         this.innerHTML = `
-            <div class="scada-panel" style="height: 100%;">
+            <div class="scada-panel" style="height: 100%; display: flex; flex-direction: column;">
                 <h3>${this.title}</h3>
                 <span class="scada-meta" style="margin-bottom: 15px;">${this.desc}</span>
-                ${fields}
-                <div class="result-display" id="res-${this.type}">0.00</div>
+                <div style="flex-grow: 1;">
+                    ${fields}
+                    <div class="result-display" id="res-${this.type}">0.00</div>
+                </div>
+                ${this.importance ? `<div class="scada-importance"><strong>Process Impact:</strong> ${this.importance}</div>` : ''}
             </div>
         `;
     }
