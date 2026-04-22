@@ -166,6 +166,11 @@ fi
 # Auto-correct incorrectly nested files from previous AI generations
 if [ -d "${SCRIPT_DIR}/content/content" ]; then
   echo "Flattening nested content/content directory..."
+
+  # Rescue the layout file that was trapped in content
+  mkdir -p "${SCRIPT_DIR}/layouts/experience"
+  mv "${SCRIPT_DIR}/content/content/experience/list.html" "${SCRIPT_DIR}/layouts/experience/list.html" 2>/dev/null || true
+
   cp -r "${SCRIPT_DIR}/content/content/"* "${SCRIPT_DIR}/content/" 2>/dev/null || true
   rm -rf "${SCRIPT_DIR}/content/content"
 fi
@@ -176,10 +181,6 @@ if [ -d "${SCRIPT_DIR}/content/layouts" ]; then
   rm -rf "${SCRIPT_DIR}/content/layouts"
 fi
 
-# Change to content directory and run Hugo.
-if [ ! -d "${SCRIPT_DIR}/content" ]; then
-  echo "Error: content directory not found at ${SCRIPT_DIR}/content" >&2
-  exit 1
-fi
-cd "${SCRIPT_DIR}/content"
+# Run Hugo from the correct repository root
+cd "${SCRIPT_DIR}"
 "${HUGO_BIN}"
