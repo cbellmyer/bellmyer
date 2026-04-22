@@ -165,4 +165,24 @@ fi
 
 # Run Hugo from the repository root
 cd "${SCRIPT_DIR}"
-"${HUGO_BIN}"
+
+# Cleanup: Fix nested content/content directory from previous generations
+if [ -d "${SCRIPT_DIR}/content/content" ]; then
+  echo "Cleaning up nested content/content directory..."
+  cp -r "${SCRIPT_DIR}/content/content/"* "${SCRIPT_DIR}/content/" 2>/dev/null || true
+  rm -rf "${SCRIPT_DIR}/content/content"
+fi
+
+# Locate the config file to prevent path resolution errors
+if [ -f "hugo.yaml" ] || [ -f "hugo.toml" ] || [ -f "config.toml" ] || [ -d "config" ]; then
+  echo "Found Hugo config in root directory."
+  "${HUGO_BIN}" --source "${SCRIPT_DIR}"
+elif [ -f "content/hugo.yaml" ]; then
+  echo "WARNING: hugo.yaml was found inside the content/ directory instead of the root." >&2
+  echo "Running Hugo using the root as source and content/hugo.yaml as config." >&2
+  "${HUGO_BIN}" --source "${SCRIPT_DIR}" --config "${SCRIPT_DIR}/content/hugo.yaml"
+else
+  echo "Error: Cannot find Hugo configuration file in root or content/ directory. Directory contents:" >&2
+  ls -la "${SCRIPT_DIR}" >&2
+  exit 1
+fi
