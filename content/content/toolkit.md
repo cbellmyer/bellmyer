@@ -76,6 +76,7 @@ menu:
 <!-- Modular Web Components -->
 
 <weather-widget class="scada-panel" style="display: block;"></weather-widget>
+
 <div class="toolkit-grid">
     <process-calculator
         type="svi"
