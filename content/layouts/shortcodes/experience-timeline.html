@@ -1,0 +1,34 @@
+{{/* Fetch all pages in the experience section */}}
+{{ $experiences := where .Site.RegularPages "Type" "experience" }}
+
+{{/* Separate standard roles and special highlights */}}
+{{ $regular := where $experiences "Params.status_code" "!=" "HIGHLIGHT_SYS" }}
+{{ $highlights := where $experiences "Params.status_code" "==" "HIGHLIGHT_SYS" }}
+
+{{/* Sort standard roles by native Hugo Date descending (newest first) */}}
+{{ $sortedRegular := sort $regular "Date" "desc" }}
+
+<h2 style="color: var(--primary); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 30px;">Professional Timeline</h2>
+
+{{ range $sortedRegular }}
+<div class="scada-panel">
+    <h3>{{ .Title }}</h3>
+    <span class="scada-meta">{{ .Params.organization }} | {{ .Params.start_date }} - {{ .Params.end_date }}</span>
+    <div class="scada-desc">
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}
+
+{{ if $highlights }}
+<div class="scada-system-overview" style="margin-top: 50px;">
+    <h3 style="text-transform: uppercase; letter-spacing: 0.5px; color: var(--primary);">Special Highlights & Leadership</h3>
+    <div class="scada-desc">
+        {{ range $index, $page := $highlights }}
+            {{ if gt $index 0 }}<div style="margin-top: 15px; border-top: 1px dashed var(--border); padding-top: 15px;"></div>{{ end }}
+            <p style="margin-bottom: 10px;"><strong>{{ .Title }} - {{ .Params.organization }}</strong></p>
+            {{ .Content }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
