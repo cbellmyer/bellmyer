@@ -163,37 +163,6 @@ if [[ "${HUGO_VERSION_OUTPUT}" != *"extended"* ]]; then
   exit 1
 fi
 
-# Auto-correct incorrectly nested files from previous AI generations
-if [ -d "${SCRIPT_DIR}/content/content" ]; then
-  echo "Flattening nested content/content directory..."
-
-  # Rescue the layout file that was trapped in content
-  mkdir -p "${SCRIPT_DIR}/layouts/experience"
-  mv "${SCRIPT_DIR}/content/content/experience/list.html" "${SCRIPT_DIR}/layouts/experience/list.html" 2>/dev/null || true
-
-  cp -r "${SCRIPT_DIR}/content/content/"* "${SCRIPT_DIR}/content/" 2>/dev/null || true
-  rm -rf "${SCRIPT_DIR}/content/content"
-fi
-if [ -d "${SCRIPT_DIR}/content/layouts" ]; then
-  echo "Flattening nested content/layouts directory..."
-  mkdir -p "${SCRIPT_DIR}/layouts"
-  cp -r "${SCRIPT_DIR}/content/layouts/"* "${SCRIPT_DIR}/layouts/" 2>/dev/null || true
-  rm -rf "${SCRIPT_DIR}/content/layouts"
-fi
-
-# Clean up structural directories and files that should never be nested inside content/
-for dir in archetypes assets layouts themes public resources static scripts; do
-  if [ -d "${SCRIPT_DIR}/content/${dir}" ]; then
-    echo "Removing mistakenly nested directory: content/${dir}"
-    rm -rf "${SCRIPT_DIR}/content/${dir}"
-  fi
-done
-for file in hugo.yaml hugo.toml config.toml .hugo-version .hugo-archive-checksum; do
-  if [ -f "${SCRIPT_DIR}/content/${file}" ]; then
-    rm -f "${SCRIPT_DIR}/content/${file}"
-  fi
-done
-
-# Run Hugo from the correct repository root
-cd "${SCRIPT_DIR}"
+# Change to the Hugo project root (content/) and run Hugo
+cd "${SCRIPT_DIR}/content"
 "${HUGO_BIN}"
