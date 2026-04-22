@@ -3,6 +3,8 @@ title: "Operator Toolkit"
 date: 2024-06-15
 draft: false
 layout: "page"
+hideMeta: true
+ShowToc: false
 menu:
   main:
     name: "Toolkit"
@@ -64,28 +66,38 @@ menu:
 </style>
 
 <!-- Modular Web Components -->
-
 <weather-widget class="scada-panel" style="display: block;"></weather-widget>
 
 <div class="toolkit-grid">
-    <process-calculator
-        type="svi"
-        title="Sludge Volume Index (SVI)"
+    <process-calculator 
+        type="svi" 
+        title="Sludge Volume Index (SVI)" 
         desc="Calculates the settling characteristics of activated sludge (mL/g).">
     </process-calculator>
 
-    <process-calculator
-        type="fm"
-        title="F/M Ratio"
+    <process-calculator 
+        type="fm" 
+        title="F/M Ratio" 
         desc="Calculates the Food-to-Microorganism ratio.">
     </process-calculator>
 
-    <process-calculator
-        type="mcrt"
-        title="MCRT (Days)"
+    <process-calculator 
+        type="mcrt" 
+        title="MCRT (Days)" 
         desc="Mean Cell Residence Time / Sludge Age calculation.">
     </process-calculator>
 
+    <process-calculator 
+        type="slr" 
+        title="Surface Loading Rate" 
+        desc="Calculates the gallons per day per square foot (gpd/sq ft).">
+    </process-calculator>
+
+    <process-calculator 
+        type="hrt" 
+        title="Hydraulic Retention Time" 
+        desc="Calculates the retention time in hours.">
+    </process-calculator>
 </div>
 
 <script>
@@ -114,7 +126,7 @@ class WeatherWidget extends HTMLElement {
             // Open-Meteo allows free, keyless API calls. Defaulting to Baltimore/MD coordinates roughly.
             const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.29&longitude=-76.61&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph');
             const data = await res.json();
-
+            
             document.getElementById('weather-status').style.display = 'none';
             document.getElementById('weather-content').style.display = 'flex';
             document.getElementById('weather-temp').innerText = `${data.current_weather.temperature}°F`;
@@ -163,6 +175,16 @@ class ProcessCalculator extends HTMLElement {
                 ${this.createInput('effFlow', 'Effluent Flow (MGD)')}
                 ${this.createInput('effTss', 'Effluent TSS (mg/L)')}
             `;
+        } else if (this.type === 'slr') {
+            fields = `
+                ${this.createInput('flow', 'Plant Flow (MGD)')}
+                ${this.createInput('area', 'Surface Area (sq ft)')}
+            `;
+        } else if (this.type === 'hrt') {
+            fields = `
+                ${this.createInput('vol', 'Tank Volume (MG)')}
+                ${this.createInput('flow', 'Plant Flow (MGD)')}
+            `;
         }
 
         this.innerHTML = `
@@ -179,7 +201,7 @@ class ProcessCalculator extends HTMLElement {
         return `
             <div class="scada-form-group">
                 <label>${label}</label>
-                <input type="number" class="scada-input" id="${this.type}-${id}" placeholder="0">
+                <input type="number" class="scada-input" id="${this.type}-${id}" placeholder="0" step="any">
             </div>
         `;
     }
@@ -201,6 +223,12 @@ class ProcessCalculator extends HTMLElement {
             const inventory = vol * mlss;
             const waste = (wasFlow * wasTss) + (effFlow * effTss);
             if (waste > 0) result = inventory / waste;
+        } else if (this.type === 'slr') {
+            const flow = val('flow'), area = val('area');
+            if (area > 0) result = (flow * 1000000) / area;
+        } else if (this.type === 'hrt') {
+            const vol = val('vol'), flow = val('flow');
+            if (flow > 0) result = (vol / flow) * 24;
         }
 
         this.querySelector(`#res-${this.type}`).innerText = result.toFixed(2);
