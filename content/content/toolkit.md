@@ -66,11 +66,12 @@ menu:
 </style>
 
 <!-- Modular Web Components -->
+
 <weather-widget class="scada-panel" style="display: block;"></weather-widget>
 <div class="toolkit-grid">
-    <process-calculator 
-        type="svi" 
-        title="Sludge Volume Index (SVI)" 
+    <process-calculator
+        type="svi"
+        title="Sludge Volume Index (SVI)"
         desc="Calculates the settling characteristics of activated sludge (mL/g).">
     </process-calculator>
     <process-calculator 
@@ -93,6 +94,7 @@ menu:
         title="Hydraulic Retention Time" 
         desc="Calculates the retention time in hours.">
     </process-calculator>
+
 </div>
 <script>
 class WeatherWidget extends HTMLElement {
