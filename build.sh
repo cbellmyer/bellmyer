@@ -163,10 +163,6 @@ if [[ "${HUGO_VERSION_OUTPUT}" != *"extended"* ]]; then
   exit 1
 fi
 
-# Change to content directory and run Hugo.
-if [ ! -d "${SCRIPT_DIR}/content" ]; then
-  echo "Error: content directory not found at ${SCRIPT_DIR}/content" >&2
-  exit 1
-fi
-cd "${SCRIPT_DIR}/content"
+# Run Hugo from the repository root
+cd "${SCRIPT_DIR}"
 "${HUGO_BIN}"
