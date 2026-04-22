@@ -94,6 +94,11 @@ menu:
         title="Hydraulic Retention Time" 
         desc="Calculates the retention time in hours.">
     </process-calculator>
+    <process-calculator
+        type="dosing"
+        title="Chemical Dosing"
+        desc="Calculates chemical dose in pounds per day (lbs/day).">
+    </process-calculator>
 
 </div>
 <script>
@@ -168,6 +173,11 @@ class ProcessCalculator extends HTMLElement {
                 ${this.createInput('vol', 'Tank Volume (MG)')}
                 ${this.createInput('flow', 'Plant Flow (MGD)')}
             `;
+        } else if (this.type === 'dosing') {
+            fields = `
+                ${this.createInput('flow', 'Plant Flow (MGD)')}
+                ${this.createInput('concentration', 'Chemical Concentration (mg/L)')}
+            `;
         }
         this.innerHTML = `
             <div class="scada-panel" style="height: 100%;">
@@ -208,6 +218,9 @@ class ProcessCalculator extends HTMLElement {
         } else if (this.type === 'hrt') {
             const vol = val('vol'), flow = val('flow');
             if (flow > 0) result = (vol / flow) * 24;
+        } else if (this.type === 'dosing') {
+            const flow = val('flow'), concentration = val('concentration');
+            result = flow * concentration * 8.34;
         }
         this.querySelector(`#res-${this.type}`).innerText = result.toFixed(2);
     }
