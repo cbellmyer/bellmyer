@@ -67,44 +67,34 @@ menu:
 
 <!-- Modular Web Components -->
 <weather-widget class="scada-panel" style="display: block;"></weather-widget>
-
 <div class="toolkit-grid">
     <process-calculator 
         type="svi" 
         title="Sludge Volume Index (SVI)" 
         desc="Calculates the settling characteristics of activated sludge (mL/g).">
     </process-calculator>
-
     <process-calculator 
         type="fm" 
         title="F/M Ratio" 
         desc="Calculates the Food-to-Microorganism ratio.">
     </process-calculator>
-
     <process-calculator 
         type="mcrt" 
         title="MCRT (Days)" 
         desc="Mean Cell Residence Time / Sludge Age calculation.">
     </process-calculator>
-
     <process-calculator 
         type="slr" 
         title="Surface Loading Rate" 
         desc="Calculates the gallons per day per square foot (gpd/sq ft).">
     </process-calculator>
-
     <process-calculator 
         type="hrt" 
         title="Hydraulic Retention Time" 
         desc="Calculates the retention time in hours.">
     </process-calculator>
 </div>
-
 <script>
-/**
- * Weather Widget Component
- * Fetches local weather based on IP geolocation using free APIs.
- */
 class WeatherWidget extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -120,13 +110,10 @@ class WeatherWidget extends HTMLElement {
         `;
         this.fetchWeather();
     }
-
     async fetchWeather() {
         try {
-            // Open-Meteo allows free, keyless API calls. Defaulting to Baltimore/MD coordinates roughly.
             const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.29&longitude=-76.61&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph');
             const data = await res.json();
-            
             document.getElementById('weather-status').style.display = 'none';
             document.getElementById('weather-content').style.display = 'flex';
             document.getElementById('weather-temp').innerText = `${data.current_weather.temperature}°F`;
@@ -138,11 +125,6 @@ class WeatherWidget extends HTMLElement {
     }
 }
 customElements.define('weather-widget', WeatherWidget);
-
-/**
- * Process Calculator Component
- * Modular component to handle specific wastewater calculations.
- */
 class ProcessCalculator extends HTMLElement {
     connectedCallback() {
         this.type = this.getAttribute('type');
@@ -151,7 +133,6 @@ class ProcessCalculator extends HTMLElement {
         this.render();
         this.addEventListener('input', this.calculate.bind(this));
     }
-
     render() {
         let fields = '';
         if (this.type === 'svi') {
@@ -186,7 +167,6 @@ class ProcessCalculator extends HTMLElement {
                 ${this.createInput('flow', 'Plant Flow (MGD)')}
             `;
         }
-
         this.innerHTML = `
             <div class="scada-panel" style="height: 100%;">
                 <h3>${this.title}</h3>
@@ -196,7 +176,6 @@ class ProcessCalculator extends HTMLElement {
             </div>
         `;
     }
-
     createInput(id, label) {
         return `
             <div class="scada-form-group">
@@ -205,11 +184,9 @@ class ProcessCalculator extends HTMLElement {
             </div>
         `;
     }
-
     calculate() {
         const val = (id) => parseFloat(this.querySelector(`#${this.type}-${id}`).value) || 0;
         let result = 0;
-
         if (this.type === 'svi') {
             const ssv = val('ssv'), mlss = val('mlss');
             if (mlss > 0) result = (ssv / mlss) * 1000;
@@ -230,7 +207,6 @@ class ProcessCalculator extends HTMLElement {
             const vol = val('vol'), flow = val('flow');
             if (flow > 0) result = (vol / flow) * 24;
         }
-
         this.querySelector(`#res-${this.type}`).innerText = result.toFixed(2);
     }
 }
