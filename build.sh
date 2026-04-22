@@ -173,6 +173,12 @@ if [ -d "${SCRIPT_DIR}/content/content" ]; then
   rm -rf "${SCRIPT_DIR}/content/content"
 fi
 
+# Cleanup: Move hugo.yaml back to the root if it was accidentally placed in content/
+if [ -f "${SCRIPT_DIR}/content/hugo.yaml" ] && [ ! -f "${SCRIPT_DIR}/hugo.yaml" ]; then
+  echo "Moving hugo.yaml from content/ back to the repository root..."
+  mv "${SCRIPT_DIR}/content/hugo.yaml" "${SCRIPT_DIR}/hugo.yaml"
+fi
+
 # Locate the config file to prevent path resolution errors
 if [ -f "hugo.yaml" ] || [ -f "hugo.toml" ] || [ -f "config.toml" ] || [ -d "config" ]; then
   echo "Found Hugo config in root directory."
