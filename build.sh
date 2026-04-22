@@ -181,6 +181,19 @@ if [ -d "${SCRIPT_DIR}/content/layouts" ]; then
   rm -rf "${SCRIPT_DIR}/content/layouts"
 fi
 
+# Clean up structural directories and files that should never be nested inside content/
+for dir in archetypes assets layouts themes public resources static scripts; do
+  if [ -d "${SCRIPT_DIR}/content/${dir}" ]; then
+    echo "Removing mistakenly nested directory: content/${dir}"
+    rm -rf "${SCRIPT_DIR}/content/${dir}"
+  fi
+done
+for file in hugo.yaml hugo.toml config.toml .hugo-version .hugo-archive-checksum; do
+  if [ -f "${SCRIPT_DIR}/content/${file}" ]; then
+    rm -f "${SCRIPT_DIR}/content/${file}"
+  fi
+done
+
 # Run Hugo from the correct repository root
 cd "${SCRIPT_DIR}"
 "${HUGO_BIN}"
