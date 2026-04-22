@@ -163,6 +163,19 @@ if [[ "${HUGO_VERSION_OUTPUT}" != *"extended"* ]]; then
   exit 1
 fi
 
+# Auto-correct incorrectly nested files from previous AI generations
+if [ -d "${SCRIPT_DIR}/content/content" ]; then
+  echo "Flattening nested content/content directory..."
+  cp -r "${SCRIPT_DIR}/content/content/"* "${SCRIPT_DIR}/content/" 2>/dev/null || true
+  rm -rf "${SCRIPT_DIR}/content/content"
+fi
+if [ -d "${SCRIPT_DIR}/content/layouts" ]; then
+  echo "Flattening nested content/layouts directory..."
+  mkdir -p "${SCRIPT_DIR}/layouts"
+  cp -r "${SCRIPT_DIR}/content/layouts/"* "${SCRIPT_DIR}/layouts/" 2>/dev/null || true
+  rm -rf "${SCRIPT_DIR}/content/layouts"
+fi
+
 # Change to content directory and run Hugo.
 if [ ! -d "${SCRIPT_DIR}/content" ]; then
   echo "Error: content directory not found at ${SCRIPT_DIR}/content" >&2
