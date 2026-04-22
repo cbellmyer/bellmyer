@@ -7,6 +7,7 @@ end_date: "PRESENT"
 status_code: "ACTIVE_SYS"
 terminal_id: "NODE-00"
 ---
+
 - Act as designated stand-in supervisor, directing shift operations, managing personnel workflows, and ensuring uninterrupted plant performance in the absence of the shift supervisor.
 - Independently evaluate plant performance data and execute critical process changes to optimize biological nutrient removal (BNR) and ensure strict adherence to NPDES permit limits.
 - Lead teams of operators in the field, coordinating complex maintenance projects, system upgrades, and hands-on operational troubleshooting of mechanical and biological systems.
