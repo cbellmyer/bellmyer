@@ -68,30 +68,31 @@ menu:
 <!-- Modular Web Components -->
 
 <weather-widget class="scada-panel" style="display: block;"></weather-widget>
+
 <div class="toolkit-grid">
     <process-calculator
         type="svi"
         title="Sludge Volume Index (SVI)"
         desc="Calculates the settling characteristics of activated sludge (mL/g).">
     </process-calculator>
-    <process-calculator 
-        type="fm" 
-        title="F/M Ratio" 
+    <process-calculator
+        type="fm"
+        title="F/M Ratio"
         desc="Calculates the Food-to-Microorganism ratio.">
     </process-calculator>
-    <process-calculator 
-        type="mcrt" 
-        title="MCRT (Days)" 
+    <process-calculator
+        type="mcrt"
+        title="MCRT (Days)"
         desc="Mean Cell Residence Time / Sludge Age calculation.">
     </process-calculator>
-    <process-calculator 
-        type="slr" 
-        title="Surface Loading Rate" 
+    <process-calculator
+        type="slr"
+        title="Surface Loading Rate"
         desc="Calculates the gallons per day per square foot (gpd/sq ft).">
     </process-calculator>
-    <process-calculator 
-        type="hrt" 
-        title="Hydraulic Retention Time" 
+    <process-calculator
+        type="hrt"
+        title="Hydraulic Retention Time"
         desc="Calculates the retention time in hours.">
     </process-calculator>
     <process-calculator
