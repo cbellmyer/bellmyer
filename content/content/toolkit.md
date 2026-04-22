@@ -64,26 +64,28 @@ menu:
 </style>
 
 <!-- Modular Web Components -->
+
 <weather-widget class="scada-panel" style="display: block;"></weather-widget>
 
 <div class="toolkit-grid">
-    <process-calculator 
-        type="svi" 
-        title="Sludge Volume Index (SVI)" 
+    <process-calculator
+        type="svi"
+        title="Sludge Volume Index (SVI)"
         desc="Calculates the settling characteristics of activated sludge (mL/g).">
     </process-calculator>
 
-    <process-calculator 
-        type="fm" 
-        title="F/M Ratio" 
+    <process-calculator
+        type="fm"
+        title="F/M Ratio"
         desc="Calculates the Food-to-Microorganism ratio.">
     </process-calculator>
 
-    <process-calculator 
-        type="mcrt" 
-        title="MCRT (Days)" 
+    <process-calculator
+        type="mcrt"
+        title="MCRT (Days)"
         desc="Mean Cell Residence Time / Sludge Age calculation.">
     </process-calculator>
+
 </div>
 
 <script>
@@ -112,7 +114,7 @@ class WeatherWidget extends HTMLElement {
             // Open-Meteo allows free, keyless API calls. Defaulting to Baltimore/MD coordinates roughly.
             const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.29&longitude=-76.61&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph');
             const data = await res.json();
-            
+
             document.getElementById('weather-status').style.display = 'none';
             document.getElementById('weather-content').style.display = 'flex';
             document.getElementById('weather-temp').innerText = `${data.current_weather.temperature}°F`;
