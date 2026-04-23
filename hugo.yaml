@@ -26,7 +26,18 @@ disableKinds:
   - term
 
 # menu:
-#   main: []
+#   main:
+#     #- name: Experience Log
+#     #  url: /experience/
+#     #  weight: 5
+#     # - name: Search
+#     #   url: search/
+#     #   weight: 10
+#     # - name: Tags
+#     #   url: tags/
+#     #   weight: 10
+#     # - name: Photography
+#     #   url: https://photo.felle.me/
 
 outputs:
   home:
