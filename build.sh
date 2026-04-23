@@ -163,6 +163,12 @@ if [[ "${HUGO_VERSION_OUTPUT}" != *"extended"* ]]; then
   exit 1
 fi
 
-# Run Hugo from the repository root
-cd "${SCRIPT_DIR}"
+# The Hugo project actually lives inside the content/ directory.
+# Move hugo.yaml back if it was accidentally placed in the repository root.
+if [ -f "${SCRIPT_DIR}/hugo.yaml" ] && [ ! -f "${SCRIPT_DIR}/content/hugo.yaml" ]; then
+  mv "${SCRIPT_DIR}/hugo.yaml" "${SCRIPT_DIR}/content/hugo.yaml"
+fi
+
+# Change to the actual project root and run Hugo
+cd "${SCRIPT_DIR}/content"
 "${HUGO_BIN}"
