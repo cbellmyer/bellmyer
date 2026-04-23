@@ -165,8 +165,8 @@ fi
 
 # The Hugo project actually lives inside the content/ directory.
 # Move hugo.yaml back if it was accidentally placed in the repository root.
-if [ -f "${SCRIPT_DIR}/hugo.yaml" ] && [ ! -f "${SCRIPT_DIR}/content/hugo.yaml" ]; then
-  mv "${SCRIPT_DIR}/hugo.yaml" "${SCRIPT_DIR}/content/hugo.yaml"
+if [ -f "${SCRIPT_DIR}/hugo.yaml" ]; then
+  mv -f "${SCRIPT_DIR}/hugo.yaml" "${SCRIPT_DIR}/content/hugo.yaml"
 fi
 
 # Change to the actual project root and run Hugo
