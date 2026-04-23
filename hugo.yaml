@@ -11,7 +11,7 @@ buildFuture: true
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["posts"]
+mainsections: ["posts", "experience"]
 
 minify:
   disableXML: true
@@ -25,16 +25,19 @@ disableKinds:
   - taxonomy
   - term
 
-menu:
-  main:
-    # - name: Search
-    #   url: search/
-    #   weight: 10
-    # - name: Tags
-    #   url: tags/
-    #   weight: 10
-    # - name: Photography
-    #   url: https://photo.felle.me/
+# menu:
+#   main:
+#     #- name: Experience Log
+#     #  url: /experience/
+#     #  weight: 5
+#     # - name: Search
+#     #   url: search/
+#     #   weight: 10
+#     # - name: Tags
+#     #   url: tags/
+#     #   weight: 10
+#     # - name: Photography
+#     #   url: https://photo.felle.me/
 
 outputs:
   home:
@@ -70,6 +73,9 @@ params:
     imageTitle: "Chris Bellmyer"
     imageWidth: 400
     imageHeight: 400
+    buttons:
+      - name: View Experience Log
+        url: /experience/
 
   socialIcons:
     - name: github
