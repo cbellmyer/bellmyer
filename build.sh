@@ -163,6 +163,6 @@ if [[ "${HUGO_VERSION_OUTPUT}" != *"extended"* ]]; then
   exit 1
 fi
 
-# Change to the Hugo project root (content/) and run Hugo
-cd "${SCRIPT_DIR}/content"
+# Run Hugo from the repository root
+cd "${SCRIPT_DIR}"
 "${HUGO_BIN}"
