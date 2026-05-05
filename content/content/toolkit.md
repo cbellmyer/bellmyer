@@ -177,23 +177,60 @@ class WeatherWidget extends HTMLElement {
             <span class="scada-meta" id="weather-status">Acquiring signal...</span>
             <div class="weather-data" id="weather-content" style="display: none;">
                 <div>
-                    <div style="color: var(--primary);" id="weather-desc">--</div>
-                    <div style="font-size: 0.85rem; color: var(--secondary);" id="weather-wind">--</div>
+                    <div style="color: var(--primary); font-weight: bold;" id="weather-desc">--</div>
+                    <div style="font-size: 0.85rem; color: var(--secondary);" id="weather-details">--</div>
                 </div>
-                <div class="weather-temp" id="weather-temp">--°F</div>
+                <div style="text-align: right;">
+                    <div class="weather-temp" id="weather-temp">--°F</div>
+                    <div style="font-size: 0.85rem; color: var(--secondary); font-weight: bold;" id="weather-feels-like">Feels like --°F</div>
+                </div>
             </div>
         `;
         this.fetchWeather();
     }
+
+    getWeatherCondition(code) {
+        const conditions = {
+            0: 'Clear sky',
+            1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
+            45: 'Fog', 48: 'Depositing rime fog',
+            51: 'Light Drizzle', 53: 'Moderate Drizzle', 55: 'Dense Drizzle',
+            56: 'Light Freezing Drizzle', 57: 'Dense Freezing Drizzle',
+            61: 'Slight Rain', 63: 'Moderate Rain', 65: 'Heavy Rain',
+            66: 'Light Freezing Rain', 67: 'Heavy Freezing Rain',
+            71: 'Slight Snow', 73: 'Moderate Snow', 75: 'Heavy Snow',
+            77: 'Snow Grains',
+            80: 'Slight Rain Showers', 81: 'Moderate Rain Showers', 82: 'Violent Rain Showers',
+            85: 'Slight Snow Showers', 86: 'Heavy Snow Showers',
+            95: 'Thunderstorm', 96: 'Thunderstorm (slight hail)', 99: 'Thunderstorm (heavy hail)'
+        };
+        return conditions[code] || 'Unknown Conditions';
+    }
+
     async fetchWeather() {
         try {
-            const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.29&longitude=-76.61&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph');
+            const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.29&longitude=-76.61&current=temperature_2m,apparent_temperature,wind_speed_10m,weather_code&temperature_unit=fahrenheit&wind_speed_unit=mph');
             const data = await res.json();
+            
+            const feelsLike = Math.round(data.current.apparent_temperature);
+            let hiColor = '#4CAF50'; // Green (Safe)
+            let hiWarning = '';
+            
+            if (feelsLike >= 115) { hiColor = '#E91E63'; hiWarning = ' - EXTREME DANGER'; } // Fuchsia
+            else if (feelsLike >= 103) { hiColor = '#F44336'; hiWarning = ' - DANGER'; } // Red
+            else if (feelsLike >= 90) { hiColor = '#FF9800'; hiWarning = ' - EXTREME CAUTION'; } // Orange
+            else if (feelsLike >= 80) { hiColor = '#FFC107'; hiWarning = ' - CAUTION'; } // Yellow
+
             document.getElementById('weather-status').style.display = 'none';
             document.getElementById('weather-content').style.display = 'flex';
-            document.getElementById('weather-temp').innerText = `${data.current_weather.temperature}°F`;
-            document.getElementById('weather-wind').innerText = `Wind: ${data.current_weather.windspeed} mph`;
-            document.getElementById('weather-desc').innerText = `Status: ACTIVE (Code ${data.current_weather.weathercode})`;
+            document.getElementById('weather-temp').innerText = `${Math.round(data.current.temperature_2m)}°F`;
+            
+            const feelsLikeEl = document.getElementById('weather-feels-like');
+            feelsLikeEl.innerText = `Feels like ${feelsLike}°F${hiWarning}`;
+            feelsLikeEl.style.color = hiColor;
+            
+            document.getElementById('weather-details').innerText = `Wind: ${Math.round(data.current.wind_speed_10m)} mph`;
+            document.getElementById('weather-desc').innerText = this.getWeatherCondition(data.current.weather_code);
         } catch (error) {
             document.getElementById('weather-status').innerText = 'Telemetry offline. Unable to fetch weather.';
         }
