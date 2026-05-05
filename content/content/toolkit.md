@@ -253,92 +253,111 @@ class WeatherWidget extends HTMLElement {
 }
 
 if (!customElements.get('process-calculator')) {
-class ProcessCalculator extends HTMLElement {
-connectedCallback() {
-this.type = this.getAttribute('type');
-this.title = this.getAttribute('title');
-this.desc = this.getAttribute('desc');
-this.importance = this.getAttribute('importance');
-this.render();
-this.addEventListener('input', this.calculate.bind(this));
-}
-render() {
-let fields = '';
-if (this.type === 'svi') {
-fields = `                 ${this.createInput('ssv', 'Settled Sludge Volume (mL/L)')}
-                ${this.createInput('mlss', 'MLSS (mg/L)')}
-            `;
-} else if (this.type === 'fm') {
-fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
-                ${this.createInput('bod', 'Primary Effluent BOD (mg/L)')}
-                ${this.createInput('vol', 'Aeration Volume (MG)')}
-                ${this.createInput('mlvss', 'MLVSS (mg/L)')}
-            `;
-} else if (this.type === 'mcrt') {
-fields = `                 ${this.createInput('vol', 'Aeration Volume (MG)')}
-                ${this.createInput('mlss', 'MLSS (mg/L)')}
-                ${this.createInput('wasFlow', 'WAS Flow (MGD)')}
-                ${this.createInput('wasTss', 'WAS TSS (mg/L)')}
-                ${this.createInput('effFlow', 'Effluent Flow (MGD)')}
-                ${this.createInput('effTss', 'Effluent TSS (mg/L)')}
-            `;
-} else if (this.type === 'slr') {
-fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
-                ${this.createInput('area', 'Surface Area (sq ft)')}
-            `;
-} else if (this.type === 'hrt') {
-fields = `                 ${this.createInput('vol', 'Tank Volume (MG)')}
-                ${this.createInput('flow', 'Plant Flow (MGD)')}
-            `;
-} else if (this.type === 'dosing') {
-fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
-                ${this.createInput('concentration', 'Chemical Concentration (mg/L)')}
-            `;
-} else if (this.type === 'wor') {
-fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
-                ${this.createInput('length', 'Total Weir Length (ft)')}
-            `;
-} else if (this.type === 'bodLoad') {
-fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
-                ${this.createInput('concentration', 'Concentration (mg/L)')}
-            `;
-} else if (this.type === 'solidsLoad') {
-fields = `                 ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
-                ${this.createInput('tss', 'Sludge Feed TSS (mg/L)')}
-                ${this.createInput('area', 'Unit Surface Area (sq ft)')}
-            `;
-} else if (this.type === 'vsr') {
-fields = `                 ${this.createInput('rawVs', 'Raw Sludge VS (%)')}
-                ${this.createInput('digVs', 'Digested Sludge VS (%)')}
-            `;
-} else if (this.type === 'vsLoading') {
-fields = `                 ${this.createInput('vsFeed', 'VS Feed Rate (lbs/day)')}
-                ${this.createInput('volCuFt', 'Digester Volume (cu ft)')}
-            `;
-} else if (this.type === 'digDt') {
-fields = `                 ${this.createInput('vol', 'Digester Volume (MG)')}
-                ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
-            `;
-}
-this.innerHTML = `            <div class="scada-panel" style="height: 100%; display: flex; flex-direction: column;">
-                <h3>${this.title}</h3>
-                <span class="scada-meta" style="margin-bottom: 15px;">${this.desc}</span>
-                <div style="flex-grow: 1;">
-                    ${fields}
-                    <div class="result-display" id="res-${this.type}">0.00</div>
+    class ProcessCalculator extends HTMLElement {
+        connectedCallback() {
+            this.type = this.getAttribute('type');
+            this.title = this.getAttribute('title');
+            this.desc = this.getAttribute('desc');
+            this.importance = this.getAttribute('importance');
+            this.render();
+            this.addEventListener('input', this.calculate.bind(this));
+        }
+        
+        render() {
+            let fields = '';
+            if (this.type === 'svi') {
+                fields = `
+                    ${this.createInput('ssv', 'Settled Sludge Volume (mL/L)')}
+                    ${this.createInput('mlss', 'MLSS (mg/L)')}
+                `;
+            } else if (this.type === 'fm') {
+                fields = `
+                    ${this.createInput('flow', 'Plant Flow (MGD)')}
+                    ${this.createInput('bod', 'Primary Effluent BOD (mg/L)')}
+                    ${this.createInput('vol', 'Aeration Volume (MG)')}
+                    ${this.createInput('mlvss', 'MLVSS (mg/L)')}
+                `;
+            } else if (this.type === 'mcrt') {
+                fields = `
+                    ${this.createInput('vol', 'Aeration Volume (MG)')}
+                    ${this.createInput('mlss', 'MLSS (mg/L)')}
+                    ${this.createInput('wasFlow', 'WAS Flow (MGD)')}
+                    ${this.createInput('wasTss', 'WAS TSS (mg/L)')}
+                    ${this.createInput('effFlow', 'Effluent Flow (MGD)')}
+                    ${this.createInput('effTss', 'Effluent TSS (mg/L)')}
+                `;
+            } else if (this.type === 'slr') {
+                fields = `
+                    ${this.createInput('flow', 'Plant Flow (MGD)')}
+                    ${this.createInput('area', 'Surface Area (sq ft)')}
+                `;
+            } else if (this.type === 'hrt') {
+                fields = `
+                    ${this.createInput('vol', 'Tank Volume (MG)')}
+                    ${this.createInput('flow', 'Plant Flow (MGD)')}
+                `;
+            } else if (this.type === 'dosing') {
+                fields = `
+                    ${this.createInput('flow', 'Plant Flow (MGD)')}
+                    ${this.createInput('concentration', 'Chemical Concentration (mg/L)')}
+                `;
+            } else if (this.type === 'wor') {
+                fields = `
+                    ${this.createInput('flow', 'Plant Flow (MGD)')}
+                    ${this.createInput('length', 'Total Weir Length (ft)')}
+                `;
+            } else if (this.type === 'bodLoad') {
+                fields = `
+                    ${this.createInput('flow', 'Plant Flow (MGD)')}
+                    ${this.createInput('concentration', 'Concentration (mg/L)')}
+                `;
+            } else if (this.type === 'solidsLoad') {
+                fields = `
+                    ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
+                    ${this.createInput('tss', 'Sludge Feed TSS (mg/L)')}
+                    ${this.createInput('area', 'Unit Surface Area (sq ft)')}
+                `;
+            } else if (this.type === 'vsr') {
+                fields = `
+                    ${this.createInput('rawVs', 'Raw Sludge VS (%)')}
+                    ${this.createInput('digVs', 'Digested Sludge VS (%)')}
+                `;
+            } else if (this.type === 'vsLoading') {
+                fields = `
+                    ${this.createInput('vsFeed', 'VS Feed Rate (lbs/day)')}
+                    ${this.createInput('volCuFt', 'Digester Volume (cu ft)')}
+                `;
+            } else if (this.type === 'digDt') {
+                fields = `
+                    ${this.createInput('vol', 'Digester Volume (MG)')}
+                    ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
+                `;
+            }
+            
+            const importanceHtml = this.importance ? '<div class="scada-importance"><strong>Process Impact:</strong> ' + this.importance + '</div>' : '';
+            
+            this.innerHTML = `
+                <div class="scada-panel" style="height: 100%; display: flex; flex-direction: column;">
+                    <h3>${this.title}</h3>
+                    <span class="scada-meta" style="margin-bottom: 15px;">${this.desc}</span>
+                    <div style="flex-grow: 1;">
+                        ${fields}
+                        <div class="result-display" id="res-${this.type}">0.00</div>
+                    </div>
+                    ${importanceHtml}
                 </div>
-                ${this.importance ?`<div class="scada-importance"><strong>Process Impact:</strong> ${this.importance}</div>` : ''}
-            </div>
-        `;
+            `;
     }
+    
     createInput(id, label) {
         return `
             <div class="scada-form-group">
                 <label>${label}</label>
-<input type="number" class="scada-input" id="${this.type}-${id}" placeholder="0" step="any">
-</div>
-`;
+                <input type="number" class="scada-input" id="${this.type}-${id}" placeholder="0" step="any">
+            </div>
+        `;
     }
+    
     calculate() {
         const val = (id) => parseFloat(this.querySelector(`#${this.type}-${id}`).value) || 0;
         let result = 0;
