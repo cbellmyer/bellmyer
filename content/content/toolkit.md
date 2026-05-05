@@ -94,27 +94,27 @@ menu:
         desc="Calculates the settling characteristics of activated sludge (mL/g)."
         importance="Crucial for monitoring sludge compaction and identifying biological foaming or bulking trends before they cause solids wash-out.">
     </process-calculator>
-    <process-calculator 
-        type="fm" 
-        title="F/M Ratio" 
+    <process-calculator
+        type="fm"
+        title="F/M Ratio"
         desc="Calculates the Food-to-Microorganism ratio."
         importance="Guides wasting strategies by balancing incoming BOD load with active biomass inventory, ensuring stable biological treatment efficiency.">
     </process-calculator>
-    <process-calculator 
-        type="mcrt" 
-        title="MCRT (Days)" 
+    <process-calculator
+        type="mcrt"
+        title="MCRT (Days)"
         desc="Mean Cell Residence Time / Sludge Age calculation."
         importance="Dictates the dominant microorganism populations in the bioreactor; critical for maintaining consistent nitrification and nutrient removal.">
     </process-calculator>
-    <process-calculator 
-        type="slr" 
-        title="Surface Loading Rate" 
+    <process-calculator
+        type="slr"
+        title="Surface Loading Rate"
         desc="Calculates the gallons per day per square foot (gpd/sq ft)."
         importance="Monitors hydraulic stress on secondary clarifiers to prevent sludge blanket failure and effluent TSS violations during peak flows.">
     </process-calculator>
-    <process-calculator 
-        type="hrt" 
-        title="Hydraulic Retention Time" 
+    <process-calculator
+        type="hrt"
+        title="Hydraulic Retention Time"
         desc="Calculates the retention time in hours."
         importance="Ensures wastewater maintains adequate contact time with active biomass for complete biological degradation and permit compliance.">
     </process-calculator>
