@@ -71,12 +71,22 @@ menu:
         border-top: 1px dotted var(--border, #333);
         line-height: 1.4;
     }
+    .scada-section-title {
+        color: var(--primary, #ccc);
+        border-bottom: 2px solid #FFC107;
+        padding-bottom: 5px;
+        margin-top: 40px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 </style>
 
 <!-- Modular Web Components -->
 
 <weather-widget class="scada-panel" style="display: block;"></weather-widget>
 
+<h2 class="scada-section-title">Liquids Processing</h2>
 <div class="toolkit-grid">
     <process-calculator
         type="svi"
@@ -114,7 +124,50 @@ menu:
         desc="Calculates chemical dose in pounds per day (lbs/day)."
         importance="Optimizes chemical usage for phosphorus precipitation and solids conditioning, preventing wasteful over-dosing and process toxicity.">
     </process-calculator>
+    <process-calculator
+        type="wor"
+        title="Weir Overflow Rate"
+        desc="Calculates gallons per day per foot of weir (gpd/ft)."
+        importance="Identifies excessive hydraulic velocities over clarifier weirs that can pull solids into the final effluent.">
+    </process-calculator>
+    <process-calculator
+        type="bodLoad"
+        title="Mass Loading (BOD/TSS)"
+        desc="Calculates total mass load in pounds per day (lbs/day)."
+        importance="Critical for anticipating increased oxygen demand and preventing aeration basins from becoming septic during high-strength industrial dumps.">
+    </process-calculator>
+</div>
 
+<h2 class="scada-section-title">Solids Handling & Dewatering</h2>
+<div class="toolkit-grid">
+    <process-calculator
+        type="solidsLoad"
+        title="Solids Loading Rate"
+        desc="Calculates lbs/day/sq ft for clarifiers or thickeners."
+        importance="Ensures thickening mechanisms aren't overloaded, preventing torque faults and maintaining consistent sludge blanket depths.">
+    </process-calculator>
+</div>
+
+<h2 class="scada-section-title">Digester Operations</h2>
+<div class="toolkit-grid">
+    <process-calculator
+        type="vsr"
+        title="Volatile Solids Reduction"
+        desc="Calculates % VSR using the Van Kleeck formula."
+        importance="Mandatory regulatory metric for anaerobic digesters to prove vector attraction reduction and pathogen destruction for biosolids land application.">
+    </process-calculator>
+    <process-calculator
+        type="vsLoading"
+        title="VS Loading Rate"
+        desc="Calculates lbs VS added per day per cubic foot."
+        importance="Prevents organic overloading, which can lead to digester souring (acid accumulation) and foaming issues.">
+    </process-calculator>
+    <process-calculator
+        type="digDt"
+        title="Digester Detention Time"
+        desc="Calculates the hydraulic detention time in days."
+        importance="Ensures sufficient time for methanogens to break down volatile acids into methane gas and stabilize the sludge.">
+    </process-calculator>
 </div>
 <script>
 class WeatherWidget extends HTMLElement {
@@ -194,6 +247,37 @@ class ProcessCalculator extends HTMLElement {
                 ${this.createInput('flow', 'Plant Flow (MGD)')}
                 ${this.createInput('concentration', 'Chemical Concentration (mg/L)')}
             `;
+        } else if (this.type === 'wor') {
+            fields = `
+                ${this.createInput('flow', 'Plant Flow (MGD)')}
+                ${this.createInput('length', 'Total Weir Length (ft)')}
+            `;
+        } else if (this.type === 'bodLoad') {
+            fields = `
+                ${this.createInput('flow', 'Plant Flow (MGD)')}
+                ${this.createInput('concentration', 'Concentration (mg/L)')}
+            `;
+        } else if (this.type === 'solidsLoad') {
+            fields = `
+                ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
+                ${this.createInput('tss', 'Sludge Feed TSS (mg/L)')}
+                ${this.createInput('area', 'Unit Surface Area (sq ft)')}
+            `;
+        } else if (this.type === 'vsr') {
+            fields = `
+                ${this.createInput('rawVs', 'Raw Sludge VS (%)')}
+                ${this.createInput('digVs', 'Digested Sludge VS (%)')}
+            `;
+        } else if (this.type === 'vsLoading') {
+            fields = `
+                ${this.createInput('vsFeed', 'VS Feed Rate (lbs/day)')}
+                ${this.createInput('volCuFt', 'Digester Volume (cu ft)')}
+            `;
+        } else if (this.type === 'digDt') {
+            fields = `
+                ${this.createInput('vol', 'Digester Volume (MG)')}
+                ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
+            `;
         }
         this.innerHTML = `
             <div class="scada-panel" style="height: 100%; display: flex; flex-direction: column;">
@@ -240,8 +324,28 @@ class ProcessCalculator extends HTMLElement {
         } else if (this.type === 'dosing') {
             const flow = val('flow'), concentration = val('concentration');
             result = flow * concentration * 8.34;
+        } else if (this.type === 'wor') {
+            const flow = val('flow'), length = val('length');
+            if (length > 0) result = (flow * 1000000) / length;
+        } else if (this.type === 'bodLoad') {
+            const flow = val('flow'), concentration = val('concentration');
+            result = flow * concentration * 8.34;
+        } else if (this.type === 'solidsLoad') {
+            const flow = val('flow'), tss = val('tss'), area = val('area');
+            if (area > 0) result = (flow * tss * 8.34) / area;
+        } else if (this.type === 'vsr') {
+            const rawVs = val('rawVs') / 100, digVs = val('digVs') / 100;
+            if (rawVs > 0 && (rawVs - (rawVs * digVs)) > 0) {
+                result = ((rawVs - digVs) / (rawVs - (rawVs * digVs))) * 100;
+            }
+        } else if (this.type === 'vsLoading') {
+            const vsFeed = val('vsFeed'), vol = val('volCuFt');
+            if (vol > 0) result = vsFeed / vol;
+        } else if (this.type === 'digDt') {
+            const vol = val('vol'), flow = val('flow');
+            if (flow > 0) result = vol / flow;
         }
-        this.querySelector(`#res-${this.type}`).innerText = result.toFixed(2);
+        this.querySelector(`#res-${this.type}`).innerText = (this.type === 'vsr') ? result.toFixed(1) + '%' : result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 }
 customElements.define('process-calculator', ProcessCalculator);
