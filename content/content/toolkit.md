@@ -181,6 +181,7 @@ menu:
         importance="Ensures sufficient time for methanogens to break down volatile acids into methane gas and stabilize the sludge.">
     </process-calculator>
 </div>
+
 <script>
 if (!customElements.get('weather-widget')) {
 class WeatherWidget extends HTMLElement {
