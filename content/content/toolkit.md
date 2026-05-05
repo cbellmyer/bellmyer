@@ -219,11 +219,11 @@ class WeatherWidget extends HTMLElement {
         try {
             const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.29&longitude=-76.61&current=temperature_2m,apparent_temperature,wind_speed_10m,weather_code&temperature_unit=fahrenheit&wind_speed_unit=mph');
             const data = await res.json();
-            
+
             const feelsLike = Math.round(data.current.apparent_temperature);
             let hiColor = '#4CAF50'; // Green (Safe)
             let hiWarning = '';
-            
+
             if (feelsLike >= 115) { hiColor = '#E91E63'; hiWarning = ' - EXTREME DANGER'; } // Fuchsia
             else if (feelsLike >= 103) { hiColor = '#F44336'; hiWarning = ' - DANGER'; } // Red
             else if (feelsLike >= 90) { hiColor = '#FF9800'; hiWarning = ' - EXTREME CAUTION'; } // Orange
@@ -232,109 +232,97 @@ class WeatherWidget extends HTMLElement {
             document.getElementById('weather-status').style.display = 'none';
             document.getElementById('weather-content').style.display = 'flex';
             document.getElementById('weather-temp').innerText = `${Math.round(data.current.temperature_2m)}°F`;
-            
+
             const feelsLikeEl = document.getElementById('weather-feels-like');
             feelsLikeEl.innerText = `Feels like ${feelsLike}°F${hiWarning}`;
             feelsLikeEl.style.color = hiColor;
-            
+
             document.getElementById('weather-details').innerText = `Wind: ${Math.round(data.current.wind_speed_10m)} mph`;
             document.getElementById('weather-desc').innerText = this.getWeatherCondition(data.current.weather_code);
         } catch (error) {
             document.getElementById('weather-status').innerText = 'Telemetry offline. Unable to fetch weather.';
         }
     }
+
 }
 if (!customElements.get('weather-widget')) {
     customElements.define('weather-widget', WeatherWidget);
 }
 class ProcessCalculator extends HTMLElement {
-    connectedCallback() {
-        this.type = this.getAttribute('type');
-        this.title = this.getAttribute('title');
-        this.desc = this.getAttribute('desc');
-        this.importance = this.getAttribute('importance');
-        this.render();
-        this.addEventListener('input', this.calculate.bind(this));
-    }
-    render() {
-        let fields = '';
-        if (this.type === 'svi') {
-            fields = `
-                ${this.createInput('ssv', 'Settled Sludge Volume (mL/L)')}
+connectedCallback() {
+this.type = this.getAttribute('type');
+this.title = this.getAttribute('title');
+this.desc = this.getAttribute('desc');
+this.importance = this.getAttribute('importance');
+this.render();
+this.addEventListener('input', this.calculate.bind(this));
+}
+render() {
+let fields = '';
+if (this.type === 'svi') {
+fields = `                 ${this.createInput('ssv', 'Settled Sludge Volume (mL/L)')}
                 ${this.createInput('mlss', 'MLSS (mg/L)')}
             `;
-        } else if (this.type === 'fm') {
-            fields = `
-                ${this.createInput('flow', 'Plant Flow (MGD)')}
+} else if (this.type === 'fm') {
+fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
                 ${this.createInput('bod', 'Primary Effluent BOD (mg/L)')}
                 ${this.createInput('vol', 'Aeration Volume (MG)')}
                 ${this.createInput('mlvss', 'MLVSS (mg/L)')}
             `;
-        } else if (this.type === 'mcrt') {
-            fields = `
-                ${this.createInput('vol', 'Aeration Volume (MG)')}
+} else if (this.type === 'mcrt') {
+fields = `                 ${this.createInput('vol', 'Aeration Volume (MG)')}
                 ${this.createInput('mlss', 'MLSS (mg/L)')}
                 ${this.createInput('wasFlow', 'WAS Flow (MGD)')}
                 ${this.createInput('wasTss', 'WAS TSS (mg/L)')}
                 ${this.createInput('effFlow', 'Effluent Flow (MGD)')}
                 ${this.createInput('effTss', 'Effluent TSS (mg/L)')}
             `;
-        } else if (this.type === 'slr') {
-            fields = `
-                ${this.createInput('flow', 'Plant Flow (MGD)')}
+} else if (this.type === 'slr') {
+fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
                 ${this.createInput('area', 'Surface Area (sq ft)')}
             `;
-        } else if (this.type === 'hrt') {
-            fields = `
-                ${this.createInput('vol', 'Tank Volume (MG)')}
+} else if (this.type === 'hrt') {
+fields = `                 ${this.createInput('vol', 'Tank Volume (MG)')}
                 ${this.createInput('flow', 'Plant Flow (MGD)')}
             `;
-        } else if (this.type === 'dosing') {
-            fields = `
-                ${this.createInput('flow', 'Plant Flow (MGD)')}
+} else if (this.type === 'dosing') {
+fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
                 ${this.createInput('concentration', 'Chemical Concentration (mg/L)')}
             `;
-        } else if (this.type === 'wor') {
-            fields = `
-                ${this.createInput('flow', 'Plant Flow (MGD)')}
+} else if (this.type === 'wor') {
+fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
                 ${this.createInput('length', 'Total Weir Length (ft)')}
             `;
-        } else if (this.type === 'bodLoad') {
-            fields = `
-                ${this.createInput('flow', 'Plant Flow (MGD)')}
+} else if (this.type === 'bodLoad') {
+fields = `                 ${this.createInput('flow', 'Plant Flow (MGD)')}
                 ${this.createInput('concentration', 'Concentration (mg/L)')}
             `;
-        } else if (this.type === 'solidsLoad') {
-            fields = `
-                ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
+} else if (this.type === 'solidsLoad') {
+fields = `                 ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
                 ${this.createInput('tss', 'Sludge Feed TSS (mg/L)')}
                 ${this.createInput('area', 'Unit Surface Area (sq ft)')}
             `;
-        } else if (this.type === 'vsr') {
-            fields = `
-                ${this.createInput('rawVs', 'Raw Sludge VS (%)')}
+} else if (this.type === 'vsr') {
+fields = `                 ${this.createInput('rawVs', 'Raw Sludge VS (%)')}
                 ${this.createInput('digVs', 'Digested Sludge VS (%)')}
             `;
-        } else if (this.type === 'vsLoading') {
-            fields = `
-                ${this.createInput('vsFeed', 'VS Feed Rate (lbs/day)')}
+} else if (this.type === 'vsLoading') {
+fields = `                 ${this.createInput('vsFeed', 'VS Feed Rate (lbs/day)')}
                 ${this.createInput('volCuFt', 'Digester Volume (cu ft)')}
             `;
-        } else if (this.type === 'digDt') {
-            fields = `
-                ${this.createInput('vol', 'Digester Volume (MG)')}
+} else if (this.type === 'digDt') {
+fields = `                 ${this.createInput('vol', 'Digester Volume (MG)')}
                 ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
             `;
-        }
-        this.innerHTML = `
-            <div class="scada-panel" style="height: 100%; display: flex; flex-direction: column;">
+}
+this.innerHTML = `            <div class="scada-panel" style="height: 100%; display: flex; flex-direction: column;">
                 <h3>${this.title}</h3>
                 <span class="scada-meta" style="margin-bottom: 15px;">${this.desc}</span>
                 <div style="flex-grow: 1;">
                     ${fields}
                     <div class="result-display" id="res-${this.type}">0.00</div>
                 </div>
-                ${this.importance ? `<div class="scada-importance"><strong>Process Impact:</strong> ${this.importance}</div>` : ''}
+                ${this.importance ?`<div class="scada-importance"><strong>Process Impact:</strong> ${this.importance}</div>` : ''}
             </div>
         `;
     }
@@ -342,9 +330,9 @@ class ProcessCalculator extends HTMLElement {
         return `
             <div class="scada-form-group">
                 <label>${label}</label>
-                <input type="number" class="scada-input" id="${this.type}-${id}" placeholder="0" step="any">
-            </div>
-        `;
+<input type="number" class="scada-input" id="${this.type}-${id}" placeholder="0" step="any">
+</div>
+`;
     }
     calculate() {
         const val = (id) => parseFloat(this.querySelector(`#${this.type}-${id}`).value) || 0;
@@ -393,7 +381,7 @@ class ProcessCalculator extends HTMLElement {
             if (flow > 0) result = vol / flow;
         }
         this.querySelector(`#res-${this.type}`).innerText = (this.type === 'vsr') ? result.toFixed(1) + '%' : result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
+}
 }
 if (!customElements.get('process-calculator')) {
     customElements.define('process-calculator', ProcessCalculator);
