@@ -248,8 +248,9 @@ class WeatherWidget extends HTMLElement {
             document.getElementById('weather-status').innerText = 'Telemetry offline. Unable to fetch weather.';
         }
     }
+
 }
-    customElements.define('weather-widget', WeatherWidget);
+customElements.define('weather-widget', WeatherWidget);
 }
 
 if (!customElements.get('process-calculator')) {
