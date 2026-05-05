@@ -19,6 +19,10 @@ menu:
         padding: 20px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+    weather-widget, process-calculator {
+        display: block;
+        height: 100%;
+    }
     .scada-meta { display: block; color: var(--secondary, #888); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.4; }
     .toolkit-grid {
         display: grid;
@@ -178,6 +182,7 @@ menu:
     </process-calculator>
 </div>
 <script>
+if (!customElements.get('weather-widget')) {
 class WeatherWidget extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -244,10 +249,11 @@ class WeatherWidget extends HTMLElement {
         }
     }
 
-}
-if (!customElements.get('weather-widget')) {
     customElements.define('weather-widget', WeatherWidget);
 }
+}
+
+if (!customElements.get('process-calculator')) {
 class ProcessCalculator extends HTMLElement {
 connectedCallback() {
 this.type = this.getAttribute('type');
@@ -382,8 +388,8 @@ this.innerHTML = `            <div class="scada-panel" style="height: 100%; disp
         }
         this.querySelector(`#res-${this.type}`).innerText = (this.type === 'vsr') ? result.toFixed(1) + '%' : result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
-}
-if (!customElements.get('process-calculator')) {
+
     customElements.define('process-calculator', ProcessCalculator);
+}
 }
 </script>
