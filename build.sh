@@ -163,10 +163,12 @@ if [[ "${HUGO_VERSION_OUTPUT}" != *"extended"* ]]; then
   exit 1
 fi
 
-# Change to content directory and run Hugo.
-if [ ! -d "${SCRIPT_DIR}/content" ]; then
-  echo "Error: content directory not found at ${SCRIPT_DIR}/content" >&2
-  exit 1
+# The Hugo project actually lives inside the content/ directory.
+# Move hugo.yaml back if it was accidentally placed in the repository root.
+if [ -f "${SCRIPT_DIR}/hugo.yaml" ]; then
+  mv -f "${SCRIPT_DIR}/hugo.yaml" "${SCRIPT_DIR}/content/hugo.yaml"
 fi
+
+# Change to the actual project root and run Hugo
 cd "${SCRIPT_DIR}/content"
 "${HUGO_BIN}"

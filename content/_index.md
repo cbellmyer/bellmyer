@@ -64,7 +64,3 @@ layout: "home"
         </ul>
     </div>
 </div>
-
-<div class="buttons animate-fade-slide-up" style="text-align: center; margin-top: 40px; margin-bottom: 40px; animation-delay: 0.6s;">
-    <a class="button" href="/experience-log/">View Experience Log</a>
-</div>
