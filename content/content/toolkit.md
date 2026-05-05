@@ -248,9 +248,8 @@ class WeatherWidget extends HTMLElement {
             document.getElementById('weather-status').innerText = 'Telemetry offline. Unable to fetch weather.';
         }
     }
-
-    customElements.define('weather-widget', WeatherWidget);
 }
+    customElements.define('weather-widget', WeatherWidget);
 }
 
 if (!customElements.get('process-calculator')) {
@@ -388,8 +387,7 @@ this.innerHTML = `            <div class="scada-panel" style="height: 100%; disp
         }
         this.querySelector(`#res-${this.type}`).innerText = (this.type === 'vsr') ? result.toFixed(1) + '%' : result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
-
-    customElements.define('process-calculator', ProcessCalculator);
 }
+    customElements.define('process-calculator', ProcessCalculator);
 }
 </script>
