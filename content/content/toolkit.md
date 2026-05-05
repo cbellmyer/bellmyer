@@ -248,21 +248,22 @@ class WeatherWidget extends HTMLElement {
             document.getElementById('weather-status').innerText = 'Telemetry offline. Unable to fetch weather.';
         }
     }
+
 }
 customElements.define('weather-widget', WeatherWidget);
 }
 
 if (!customElements.get('process-calculator')) {
-    class ProcessCalculator extends HTMLElement {
-        connectedCallback() {
-            this.type = this.getAttribute('type');
-            this.title = this.getAttribute('title');
-            this.desc = this.getAttribute('desc');
-            this.importance = this.getAttribute('importance');
-            this.render();
-            this.addEventListener('input', this.calculate.bind(this));
-        }
-        
+class ProcessCalculator extends HTMLElement {
+connectedCallback() {
+this.type = this.getAttribute('type');
+this.title = this.getAttribute('title');
+this.desc = this.getAttribute('desc');
+this.importance = this.getAttribute('importance');
+this.render();
+this.addEventListener('input', this.calculate.bind(this));
+}
+
         render() {
             let fields = '';
             if (this.type === 'svi') {
@@ -333,9 +334,9 @@ if (!customElements.get('process-calculator')) {
                     ${this.createInput('flow', 'Sludge Feed Flow (MGD)')}
                 `;
             }
-            
+
             const importanceHtml = this.importance ? '<div class="scada-importance"><strong>Process Impact:</strong> ' + this.importance + '</div>' : '';
-            
+
             this.innerHTML = `
                 <div class="scada-panel" style="height: 100%; display: flex; flex-direction: column;">
                     <h3>${this.title}</h3>
@@ -348,7 +349,7 @@ if (!customElements.get('process-calculator')) {
                 </div>
             `;
     }
-    
+
     createInput(id, label) {
         return `
             <div class="scada-form-group">
@@ -357,7 +358,7 @@ if (!customElements.get('process-calculator')) {
             </div>
         `;
     }
-    
+
     calculate() {
         const val = (id) => parseFloat(this.querySelector(`#${this.type}-${id}`).value) || 0;
         let result = 0;
@@ -405,8 +406,9 @@ if (!customElements.get('process-calculator')) {
             if (flow > 0) result = vol / flow;
         }
         this.querySelector(`#res-${this.type}`).innerText = (this.type === 'vsr') ? result.toFixed(1) + '%' : result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
 }
 }
-    customElements.define('process-calculator', ProcessCalculator);
+customElements.define('process-calculator', ProcessCalculator);
 }
 </script>
