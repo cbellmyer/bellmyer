@@ -248,8 +248,9 @@ class WeatherWidget extends HTMLElement {
             document.getElementById('weather-status').innerText = 'Telemetry offline. Unable to fetch weather.';
         }
     }
+
 }
-    customElements.define('weather-widget', WeatherWidget);
+customElements.define('weather-widget', WeatherWidget);
 }
 
 if (!customElements.get('process-calculator')) {
@@ -336,6 +337,7 @@ this.innerHTML = `            <div class="scada-panel" style="height: 100%; disp
             <div class="scada-form-group">
                 <label>${label}</label>
 <input type="number" class="scada-input" id="${this.type}-${id}" placeholder="0" step="any">
+
 </div>
 `;
     }
