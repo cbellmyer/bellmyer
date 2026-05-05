@@ -61,13 +61,6 @@ params:
     enabled: true
     title: "Chris Bellmyer"
     subtitle: "Wastewater Reclamation Plant Operator III"
-    imageUrl: "images/profile/chris.png"
-    imageTitle: "Chris Bellmyer"
-    imageWidth: 150
-    imageHeight: 150
-    buttons:
-      - name: View Experience Log
-        url: /experience/
 
   socialIcons:
     - name: github
