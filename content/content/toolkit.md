@@ -12,6 +12,14 @@ menu:
 ---
 
 <style>
+    .scada-panel {
+        background: var(--entry, #1e1e1e);
+        border: 1px solid var(--border, #333);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .scada-meta { display: block; color: var(--secondary, #888); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.4; }
     .toolkit-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -236,7 +244,9 @@ class WeatherWidget extends HTMLElement {
         }
     }
 }
-customElements.define('weather-widget', WeatherWidget);
+if (!customElements.get('weather-widget')) {
+    customElements.define('weather-widget', WeatherWidget);
+}
 class ProcessCalculator extends HTMLElement {
     connectedCallback() {
         this.type = this.getAttribute('type');
@@ -385,5 +395,7 @@ class ProcessCalculator extends HTMLElement {
         this.querySelector(`#res-${this.type}`).innerText = (this.type === 'vsr') ? result.toFixed(1) + '%' : result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 }
-customElements.define('process-calculator', ProcessCalculator);
+if (!customElements.get('process-calculator')) {
+    customElements.define('process-calculator', ProcessCalculator);
+}
 </script>

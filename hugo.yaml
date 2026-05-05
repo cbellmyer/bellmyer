@@ -63,8 +63,8 @@ params:
     subtitle: "Wastewater Reclamation Plant Operator III"
     imageUrl: "images/profile/chris.jpg"
     imageTitle: "Chris Bellmyer"
-    imageWidth: 400
-    imageHeight: 400
+    imageWidth: 150
+    imageHeight: 150
     buttons:
       - name: View Experience Log
         url: /experience/

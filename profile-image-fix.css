@@ -1,0 +1,6 @@
+/* Fix profile image aspect ratio and apply circular frame */
+.profile img,
+.profile_inner img {
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
