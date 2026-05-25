@@ -27,9 +27,21 @@ disableKinds:
 
 menu:
   main:
-    - name: Home
-      url: /
+    - name: Story
+      url: /story/
+      weight: 5
+    - name: Career
+      url: /career/
       weight: 10
+    - name: Toolkit
+      url: /toolkit/
+      weight: 15
+    - name: GitHub
+      url: "https://github.com/cbellmyer"
+      weight: 20
+    - name: LinkedIn
+      url: "https://linkedin.com/in/cbellmyer"
+      weight: 25
 
 outputs:
   home:

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="dark">
+<head>
+    {{- partial "head.html" . }}
+</head>
+<body class="home" id="top">
+    {{- partial "header.html" . -}}
+
+    <!-- ── HERO ─────────────────────────────────────────────────── -->
+    <div class="home-hero">
+        <div class="hero-divider"></div>
+
+        <div class="hero-left">
+            <div class="hero-eyebrow">[ Wastewater Reclamation · GIS · Maryland Wastewater 5A Licensed ]</div>
+            <h1 class="hero-name">
+                Chris<br>
+                <span>Bellmyer</span>
+            </h1>
+            <p class="hero-hook">
+                Operator. Cartographer. Builder.<br>
+                Protecting water from the bayou to the Bay.
+            </p>
+
+            <div class="hero-tags">
+                <span class="hero-tag highlight">Maryland Wastewater 5A Licensed</span>
+                <span class="hero-tag highlight">Self-Taught GIS</span>
+                <span class="hero-tag highlight">B.A. Environmental Sustainability</span>
+                <span class="hero-tag">Howard County Gov</span>
+                <span class="hero-tag">10+ Years Environmental</span>
+                <span class="hero-tag">AmeriCorps Alum</span>
+                <span class="hero-tag">FEMA · White House</span>
+                <span class="hero-tag">Operator Mentor</span>
+                <span class="hero-tag">Chesapeake Bay Watershed</span>
+                <span class="hero-tag">Human Ecology</span>
+                <span class="hero-tag">Shutterpaws Founder</span>
+            </div>
+
+            <div class="hero-ctas">
+                <a href="/story/" class="btn-primary">My Story</a>
+                <a href="/career/" class="btn-secondary">Career Path</a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-stat-stack">
+                <div class="stat-card yellow">
+                    <div class="stat-label">[ Current License ]</div>
+                    <div class="stat-value">Maryland Wastewater 5A</div>
+                    <div class="stat-sub">Highest operator grade in the state</div>
+                </div>
+                <div class="stat-card teal">
+                    <div class="stat-label">[ Experience ]</div>
+                    <div class="stat-value">10+ Years</div>
+                    <div class="stat-sub">Environmental field &amp; operations</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-label">[ Notable ]</div>
+                    <div class="stat-value">White House</div>
+                    <div class="stat-sub">Workshop on Information Flows — Hurricane Maria response</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── EXPERTISE ─────────────────────────────────────────────── -->
+    <div class="expertise-section">
+        <div class="section-label">Expertise</div>
+        <h2 class="section-title">What I Bring to the Work</h2>
+        <p class="section-intro">A decade of environmental work across disciplines — field operations, geospatial analysis, and technical systems — all in service of the same mission.</p>
+
+        <div class="expertise-grid">
+            <div class="expertise-card ops">
+                <div class="expertise-icon">⚙</div>
+                <div class="expertise-title">Operations</div>
+                <ul class="expertise-items">
+                    <li>Maryland Wastewater 5A Licensed Operator</li>
+                    <li>Wastewater reclamation &amp; treatment</li>
+                    <li>Process control &amp; SCADA systems</li>
+                    <li>Biological &amp; chemical treatment</li>
+                    <li>Regulatory compliance</li>
+                    <li>Operator mentorship &amp; training</li>
+                </ul>
+            </div>
+            <div class="expertise-card geo">
+                <div class="expertise-icon">◎</div>
+                <div class="expertise-title">Geospatial / Environmental</div>
+                <ul class="expertise-items">
+                    <li>GIS analysis &amp; mapping (self-taught)</li>
+                    <li>Infrastructure resilience inspection</li>
+                    <li>Stormwater BMP programs</li>
+                    <li>Emergency management GIS</li>
+                    <li>Geospatial data standards</li>
+                    <li>Ambient water quality monitoring</li>
+                </ul>
+            </div>
+            <div class="expertise-card tech">
+                <div class="expertise-icon">⌬</div>
+                <div class="expertise-title">Information Technology</div>
+                <ul class="expertise-items">
+                    <li>Cloudflare Workers &amp; Pages</li>
+                    <li>Hugo static site generation</li>
+                    <li>JavaScript &amp; web development</li>
+                    <li>Workflow automation &amp; tooling</li>
+                    <li>IT systems administration</li>
+                    <li>GitHub &amp; version control</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── TOOLKIT CTA ────────────────────────────────────────────── -->
+    <div class="toolkit-cta-section">
+        <a href="/toolkit/" class="toolkit-cta">
+            <div>
+                <div class="toolkit-cta-label">[ Operator Resource ]</div>
+                <div class="toolkit-cta-title">Operator Toolkit</div>
+                <div class="toolkit-cta-desc">A collection of wastewater process calculators — SVI, F/M Ratio, MCRT, HRT, Chemical Dosing, and more — built for operators in the field.</div>
+            </div>
+            <div class="btn-primary" style="white-space: nowrap; flex-shrink: 0;">Open Toolkit →</div>
+        </a>
+    </div>
+
+    {{- partial "footer.html" . -}}
+</body>
+</html>
