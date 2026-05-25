@@ -29,13 +29,17 @@ The goal is a site that feels like a plant operator's workstation — not a mark
 ## Pages
 
 ### Home
+
 Hero with name, tagline, credential tags (5A license, 10+ years, White House), and a narrative section that frames the full career arc through a single through-line.
 
 ### Story (`/story/`)
+
 Long-form narrative account of the career — written in a field-report voice, as if by a knowledgeable colleague. Covers Blue Water Baltimore, MES, CrowdRescue / FEMA / White House, the COVID pivot into wastewater operations, and rapid advancement to Operator III.
 
 ### Career (`/career/`)
+
 SCADA-styled timeline. Each role rendered as a Foxboro process unit with:
+
 - Telemetry table (dates, org, location, type)
 - Field report narrative
 - Foxboro-style visual framing
@@ -43,6 +47,7 @@ SCADA-styled timeline. Each role rendered as a Foxboro process unit with:
 The COVID gap is styled as a bypassed/diverted flow path. Notable Events Log at the bottom mimics an alarm acknowledgment log.
 
 ### Toolkit (`/toolkit/`)
+
 Process calculators for wastewater operations:
 
 **Liquids Processing:** SVI, F/M Ratio, MCRT, Surface Loading Rate, Weir Overflow Rate, Mass Loading, Hydraulic Retention Time, Chemical Dosing
@@ -59,12 +64,12 @@ Each calculator includes inputs, a yellow result readout, and a Process Impact d
 
 Project-level template overrides live in `content/layouts/` and take precedence over the theme:
 
-| File | Purpose |
-|------|---------|
-| `content/layouts/partials/header.html` | Adds hamburger nav toggle for mobile |
-| `content/layouts/partials/footer.html` | Footer with copyright + tagline |
-| `content/layouts/partials/extend_head.html` | Removes favicon; loads Google Fonts |
-| `content/layouts/toolkit/single.html` | Standalone full-width toolkit page (bypasses theme's 720px content constraint) |
+| File                                        | Purpose                                                                        |
+| ------------------------------------------- | ------------------------------------------------------------------------------ |
+| `content/layouts/partials/header.html`      | Adds hamburger nav toggle for mobile                                           |
+| `content/layouts/partials/footer.html`      | Footer with copyright + tagline                                                |
+| `content/layouts/partials/extend_head.html` | Removes favicon; loads Google Fonts                                            |
+| `content/layouts/toolkit/single.html`       | Standalone full-width toolkit page (bypasses theme's 720px content constraint) |
 
 Styles are in `content/assets/css/extended/bellmyer.css`.
 
