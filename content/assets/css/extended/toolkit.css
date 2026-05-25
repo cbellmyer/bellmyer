@@ -1,0 +1,507 @@
+/* ============================================================
+   OPERATOR TOOLKIT — SCADA Calculator Interface
+   ============================================================ */
+
+body.toolkit {
+  --tk-panel: #161d2a;
+  --tk-inner: #1a2232;
+  --tk-border: #2d3a50;
+  --tk-sub: #242e40;
+  --tk-hdr: #0d1424;
+  --tk-label: #546878;
+  --tk-notes-bg: #0c1520;
+  --tk-input-bg: #0f1620;
+  --tk-green: #40e060;
+}
+
+/* ---- Masthead ---- */
+
+.toolkit-masthead {
+  background: var(--theme);
+  border-bottom: 2px solid var(--border);
+}
+
+.toolkit-masthead-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2.5rem 4rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.tk-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.tk-masthead-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.tk-masthead-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.15em;
+  margin-top: 0.5rem;
+}
+
+.tk-masthead-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.tk-system-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+}
+
+.tk-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 6px var(--teal-dim);
+  animation: tk-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes tk-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.tk-clock {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.1em;
+}
+
+/* ---- Canvas ---- */
+
+.toolkit-canvas {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 4rem 4rem;
+}
+
+/* ---- Weather Panel ---- */
+
+.tk-weather-panel {
+  background: var(--tk-panel);
+  border: 1px solid var(--tk-border);
+  margin-bottom: 2.5rem;
+}
+
+.tk-weather-hdr {
+  background: var(--tk-hdr);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.tk-panel-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tk-weather-location {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.46rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.1em;
+  flex: 1;
+}
+
+.tk-weather-live {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.46rem;
+  color: var(--teal-dim);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.tk-dot-live {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: tk-pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.tk-weather-loading {
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.12em;
+}
+
+.tk-weather-content {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+}
+
+.tk-wx-main {
+  padding: 1.2rem 1.2rem 1rem;
+  border-right: 1px solid var(--tk-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tk-wx-temp {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--yellow);
+  line-height: 1;
+  text-shadow: 0 0 16px rgb(232 180 74 / 30%);
+}
+
+.tk-wx-condition {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--primary);
+  margin-top: 0.5rem;
+}
+
+.tk-wx-feels {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.48rem;
+  color: var(--gray);
+  letter-spacing: 0.06em;
+}
+
+.tk-wx-advisory {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  margin-top: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+  width: fit-content;
+}
+
+.tk-wx-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.tk-wx-cell {
+  padding: 0.65rem 0.85rem;
+  border-right: 1px solid var(--tk-border);
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.tk-wx-cell:nth-child(4n) { border-right: none; }
+.tk-wx-cell:nth-child(n+5) { border-bottom: none; }
+
+.tk-wx-cell-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 0.14em;
+  color: var(--tk-label);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.tk-wx-cell-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--teal);
+  line-height: 1.1;
+}
+
+.tk-wx-cell-unit {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.4rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.08em;
+  margin-top: 0.2rem;
+}
+
+/* ---- Section Headers ---- */
+
+.tk-section { margin-bottom: 2.5rem; }
+
+.tk-section-hdr {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.tk-section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tk-section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Calculator Grid ---- */
+
+.tk-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1px;
+  background: var(--tk-border);
+  border: 1px solid var(--tk-border);
+}
+
+/* ---- Calculator Card (rendered inside web component) ---- */
+
+.tk-calc-card {
+  background: var(--tk-panel);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tk-calc-card-hdr {
+  background: var(--tk-hdr);
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--tk-sub);
+}
+
+.tk-calc-id {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 0.15em;
+  color: var(--teal-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.tk-calc-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+.tk-calc-desc {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.42rem;
+  color: var(--tk-label);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
+.tk-calc-fields {
+  padding: 0.7rem 0.8rem 0.5rem;
+  flex: 1;
+}
+
+.tk-field { margin-bottom: 0.55rem; }
+
+.tk-field-label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 0.08em;
+  color: var(--tk-label);
+  text-transform: uppercase;
+  margin-bottom: 0.22rem;
+}
+
+.tk-field-input {
+  width: 100%;
+  background: var(--tk-input-bg);
+  border: 1px solid var(--tk-border);
+  color: var(--primary);
+  padding: 0.38rem 0.6rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  box-sizing: border-box;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.tk-field-input:focus {
+  border-color: var(--yellow-dim);
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(232 180 74 / 10%);
+}
+
+.tk-calc-result {
+  padding: 0.7rem 0.8rem;
+  border-top: 1px solid var(--tk-sub);
+  background: var(--tk-input-bg);
+  text-align: center;
+}
+
+.tk-result-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 0.15em;
+  color: var(--tk-label);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.tk-result-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.7rem;
+  color: var(--yellow);
+  text-shadow: 0 0 14px rgb(232 180 74 / 28%);
+  line-height: 1;
+}
+
+.tk-result-unit {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.4rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+.tk-calc-impact {
+  padding: 0.55rem 0.8rem;
+  border-top: 1px solid var(--tk-sub);
+  background: var(--tk-notes-bg);
+}
+
+.tk-impact-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.38rem;
+  letter-spacing: 0.15em;
+  color: var(--teal-dim);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.tk-impact-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.44rem;
+  color: var(--gray-dim);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Unit Converter multi-output ---- */
+
+.tk-multi-results {
+  padding: 0.7rem 0.8rem;
+  border-top: 1px solid var(--tk-sub);
+  background: var(--tk-input-bg);
+}
+
+.tk-multi-result-label-hdr {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 0.15em;
+  color: var(--tk-label);
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.tk-multi-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--tk-sub);
+}
+
+.tk-multi-row:last-child { border-bottom: none; }
+
+.tk-multi-row-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.42rem;
+  color: var(--tk-label);
+  letter-spacing: 0.05em;
+}
+
+.tk-multi-row-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--yellow);
+  font-weight: bold;
+}
+
+/* ---- Responsive ---- */
+
+@media (width <= 1100px) {
+  .toolkit-masthead-inner,
+  .toolkit-canvas { padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+
+@media (width <= 900px) {
+  .toolkit-masthead-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .tk-masthead-right { align-items: flex-start; }
+
+  .toolkit-canvas { padding: 1.5rem 2rem 3rem; }
+
+  .tk-weather-content { grid-template-columns: 1fr; }
+
+  .tk-wx-main {
+    border-right: none;
+    border-bottom: 1px solid var(--tk-border);
+  }
+
+  .tk-wx-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .tk-wx-cell:nth-child(4n) { border-right: 1px solid var(--tk-border); }
+  .tk-wx-cell:nth-child(n+5) { border-bottom: 1px solid var(--tk-border); }
+  .tk-wx-cell:nth-child(2n) { border-right: none; }
+  .tk-wx-cell:nth-child(n+7) { border-bottom: none; }
+}
+
+@media (width <= 600px) {
+  .tk-calc-grid { grid-template-columns: 1fr; }
+}

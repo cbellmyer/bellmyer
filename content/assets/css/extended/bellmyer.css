@@ -23,10 +23,17 @@
   --bm-red: #c85a5a;
 }
 
+/* --- Global font scale --- */
+html {
+  font-size: 20px;
+}
+
 /* --- Base body --- */
 body {
   font-family: Barlow, sans-serif;
   font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 /* ============================================================
@@ -80,6 +87,83 @@ body.home .header #menu .active {
 }
 
 /* ============================================================
+   MOBILE NAV — Hamburger toggle
+   ============================================================ */
+
+#nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--gray);
+  cursor: pointer;
+  padding: 0.28rem 0.7rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+#nav-toggle:hover {
+  color: var(--yellow);
+  border-color: var(--yellow-dim);
+}
+
+@media (width <= 768px) {
+  #nav-toggle {
+    display: block;
+    margin: auto 0 auto auto;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  body.home .header .nav {
+    padding: 0.9rem 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  #menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: visible;
+    white-space: normal;
+    padding: 0.25rem 0 0.5rem;
+    margin: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  #menu.nav-open {
+    display: flex;
+  }
+
+  #menu li {
+    line-height: 1;
+  }
+
+  #menu li + li {
+    margin-inline-start: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  #menu a {
+    padding: 0.65rem var(--gap);
+    display: block;
+    font-size: 0.75rem;
+  }
+
+  body.home .header #menu a {
+    padding: 0.65rem 0;
+    font-size: 0.65rem;
+  }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 
@@ -95,6 +179,12 @@ body.home .header #menu .active {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.footer-tagline {
+  font-style: italic;
+  color: var(--gray-dim);
+  letter-spacing: 0.06em;
 }
 
 .footer a {
