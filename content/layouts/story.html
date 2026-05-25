@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="dark">
+<head>
+    {{- partial "head.html" . }}
+</head>
+<body class="story" id="top">
+    {{- partial "header.html" . -}}
+
+    <div class="inner-page-hero">
+        <div class="inner-page-hero-inner">
+            <div class="section-label">The Story</div>
+            <h1 class="inner-page-title">From the Bayou<br><span>to the Bay</span></h1>
+            <p class="inner-page-subtitle">A career built around one constant: going where the water needs protecting.</p>
+        </div>
+    </div>
+
+    <div class="story-section">
+        <div class="story-inner">
+            <div class="story-sidebar">
+                <div class="story-nav">
+                    <div class="story-nav-item active">
+                        <div class="story-nav-dot"></div>
+                        <span class="story-nav-text">Origin</span>
+                    </div>
+                    <div class="story-nav-item">
+                        <div class="story-nav-dot"></div>
+                        <span class="story-nav-text">The GIS Years</span>
+                    </div>
+                    <div class="story-nav-item">
+                        <div class="story-nav-dot"></div>
+                        <span class="story-nav-text">Maria &amp; FEMA</span>
+                    </div>
+                    <div class="story-nav-item">
+                        <div class="story-nav-dot"></div>
+                        <span class="story-nav-text">The Pivot</span>
+                    </div>
+                    <div class="story-nav-item">
+                        <div class="story-nav-dot"></div>
+                        <span class="story-nav-text">Now</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-content">
+                <span class="story-lead">"I grew up where the land dissolves into the water."</span>
+                <p>The Alabama Gulf Coast — cypress swamps, brackish bayous, the kind of biodiversity that gets into your bones. That environment taught me early what healthy water looks like, and what it means when it isn't.</p>
+                <p>I moved north and found Baltimore, a city with a complicated relationship with its waterways. Through <strong>Blue Water Baltimore</strong> and AmeriCorps, I spent two years focused on giving communities access to the same ecological richness I'd grown up with. It wasn't just a job. It was the beginning of a mission.</p>
+                <p>At <strong>Maryland Environmental Service</strong>, I taught myself GIS from scratch — no formal training, just problems that needed solving and tools that could solve them. I built workflows, ran infrastructure resilience inspections, and worked on stormwater BMP programs across the state. The technical side of environmental work started to feel as natural as the fieldwork.</p>
+                <p>In 2017, Hurricane Maria made landfall in Puerto Rico. I joined <strong>CrowdRescue HQ</strong> as a volunteer, mapping resource needs in real time. What started as volunteer GIS work escalated fast — I ended up running the geospatial infrastructure, sitting in on coordination calls at <strong>FEMA HQ</strong>, attending a <strong>White House workshop</strong> on information flows during natural disasters, and contributing to Geospatial Consortium standards for emergency response data. It remains one of the most consequential things I've ever done.</p>
+                <p>COVID collapsed the environmental field. I lost my position and spent time finding my footing — but I never left the mission. I came back through a different door: <strong>wastewater treatment plant operations</strong>. I started as an Operator-in-Training and earned my <strong>Maryland Wastewater 5A license</strong> — the highest grade in the state — in under two years. Now, as an Operator III with Howard County Government, I protect the Chesapeake Bay watershed every day. And I'm training the next generation of operators through our apprenticeship program.</p>
+                <p>The tools change. The water doesn't.</p>
+            </div>
+        </div>
+    </div>
+
+    {{- partial "footer.html" . -}}
+</body>
+</html>

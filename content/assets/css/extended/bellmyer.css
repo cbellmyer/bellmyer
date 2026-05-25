@@ -188,7 +188,7 @@ body.home .header #menu .active {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: var(--gray);
   letter-spacing: 0.05em;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
   max-width: 420px;
   line-height: 1.5;
   opacity: 0;
@@ -199,7 +199,7 @@ body.home .header #menu .active {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   opacity: 0;
   animation: fadeUp 0.6s ease forwards 0.8s;
 }
@@ -278,7 +278,7 @@ body.home .header #menu .active {
 .hero-stat-stack {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
   max-width: 340px;
   opacity: 0;
@@ -342,7 +342,7 @@ body.home .header #menu .active {
   background: var(--bg2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 .story-inner {
@@ -351,7 +351,7 @@ body.home .header #menu .active {
   padding: 0 4rem;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 6rem;
+  gap: 4rem;
   align-items: start;
 }
 
@@ -448,7 +448,7 @@ body.home .header #menu .active {
 .expertise-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 4rem;
+  padding: 4rem;
 }
 
 .section-title {
@@ -465,20 +465,20 @@ body.home .header #menu .active {
   color: var(--gray);
   max-width: 600px;
   font-size: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   line-height: 1.7;
 }
 
 .expertise-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .expertise-card {
   background: var(--bg2);
   border: 1px solid var(--border);
-  padding: 2rem;
+  padding: 1.5rem;
   transition: border-color 0.3s;
   position: relative;
   overflow: hidden;
@@ -547,13 +547,13 @@ body.home .header #menu .active {
 .timeline-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 4rem;
+  padding: 4rem;
 }
 
 .timeline {
   position: relative;
   padding-left: 2rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .timeline::before {
@@ -568,7 +568,7 @@ body.home .header #menu .active {
 
 .timeline-item {
   position: relative;
-  padding-bottom: 2.5rem;
+  padding-bottom: 1.75rem;
   padding-left: 1.5rem;
 }
 
@@ -665,14 +665,14 @@ body.home .header #menu .active {
 .toolkit-cta-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 4rem;
+  padding: 4rem;
 }
 
 .toolkit-cta {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-left: 4px solid var(--yellow);
-  padding: 3rem 4rem;
+  padding: 2rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -708,6 +708,53 @@ body.home .header #menu .active {
   font-size: 0.9rem;
   max-width: 500px;
   line-height: 1.6;
+}
+
+/* ============================================================
+   INNER PAGE HERO (Story, Career, etc.)
+   ============================================================ */
+
+.inner-page-hero {
+  border-bottom: 1px solid var(--border);
+  background: var(--theme);
+}
+
+.inner-page-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 4rem 2.5rem;
+}
+
+.inner-page-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.inner-page-title span {
+  color: var(--yellow);
+}
+
+.inner-page-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+body.story .story-sidebar {
+  top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .inner-page-hero-inner {
+    padding: 3rem 2rem 2.5rem;
+  }
 }
 
 /* ============================================================
