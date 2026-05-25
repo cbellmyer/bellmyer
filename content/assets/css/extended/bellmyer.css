@@ -41,7 +41,6 @@ body.home .header {
   z-index: 100;
   background: rgb(15 17 20 / 85%);
   backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   line-height: 1;
 }
@@ -750,7 +749,7 @@ body.story .story-sidebar {
   top: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .inner-page-hero-inner {
     padding: 3rem 2rem 2.5rem;
   }
