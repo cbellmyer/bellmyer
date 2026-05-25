@@ -388,6 +388,13 @@ body.home .header #menu .active {
   align-items: center;
   gap: 0.8rem;
   padding: 0.6rem 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.story-nav-item:hover {
+  opacity: 0.8;
 }
 
 .story-nav-dot {
@@ -436,8 +443,30 @@ body.home .header #menu .active {
   color: var(--primary);
   letter-spacing: 0.01em;
   line-height: 1.3;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: block;
+}
+
+.story-chapter-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin: 3rem 0 1.25rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgb(255 255 255 / 6%);
+  scroll-margin-top: 2.5rem;
+}
+
+.story-chapter-label:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+body.story {
+  scroll-behavior: smooth;
 }
 
 /* ============================================================

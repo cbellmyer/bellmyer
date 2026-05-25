@@ -1,0 +1,670 @@
+/* ============================================================
+   CAREER PAGE — SCADA Process View
+   Isolated styles for body.career
+   ============================================================ */
+
+body.career {
+  --cp-panel: #161d2a;
+  --cp-inner: #1a2232;
+  --cp-border: #2d3a50;
+  --cp-sub-border: #242e40;
+  --cp-header: #0d1424;
+  --cp-header-feat: #231800;
+  --cp-header-cur: #081c10;
+  --cp-header-bypass: #111418;
+  --cp-label: #546878;
+  --cp-value: var(--teal);
+  --cp-notes-bg: #0c1520;
+  --cp-notes-text: #7ab4c8;
+  --cp-bypass-bg: #111418;
+  --cp-bypass-border: #262c35;
+  --cp-bypass-text: #404858;
+  --cp-green: #40e060;
+  --cp-green-border: #30c050;
+  --cp-events-hdr: #1e1500;
+}
+
+/* ---- Masthead ---- */
+
+.career-masthead {
+  background: var(--theme);
+  border-bottom: 2px solid var(--border);
+}
+
+.career-masthead-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2.5rem 4rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.career-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.career-masthead-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.career-masthead-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.15em;
+  margin-top: 0.5rem;
+}
+
+.career-masthead-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.career-system-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+}
+
+.career-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #20c040;
+  box-shadow: 0 0 6px #20c040;
+  animation: career-pulse 2s ease-in-out infinite;
+}
+
+@keyframes career-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.career-clock-display {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.1em;
+}
+
+/* ---- Canvas ---- */
+
+.career-canvas {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 4rem 4rem;
+}
+
+/* ---- SCADA Nav Buttons ---- */
+
+.career-scada-nav {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  background: var(--cp-panel);
+  border: 1px solid var(--cp-border);
+  padding: 0.55rem 0.7rem;
+}
+
+.scada-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.38rem 0.85rem;
+  border: 1px solid;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.1s;
+}
+
+.scada-btn-default {
+  background: var(--cp-inner);
+  border-color: var(--cp-border);
+  color: var(--gray);
+}
+
+.scada-btn-default:hover {
+  background: var(--cp-border);
+  color: var(--primary);
+}
+
+.scada-btn-yellow {
+  background: rgb(232 180 74 / 10%);
+  border-color: var(--yellow-dim);
+  color: var(--yellow);
+}
+
+.scada-btn-yellow:hover { background: rgb(232 180 74 / 20%); }
+
+.scada-btn-active {
+  background: var(--cp-border);
+  border-color: var(--teal-dim);
+  color: var(--teal);
+  cursor: default;
+}
+
+/* ---- System Overview Panel ---- */
+
+.career-overview-panel {
+  background: var(--cp-panel);
+  border: 1px solid var(--cp-border);
+  margin-bottom: 1.5rem;
+}
+
+.career-panel-header {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--cp-header);
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.career-panel-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.career-panel-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.46rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.1em;
+}
+
+.career-overview-cells {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.overview-stat-cell {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-right: 1px solid var(--cp-border);
+}
+
+.overview-stat-cell:last-child { border-right: none; }
+
+.overview-stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cp-label);
+  margin-bottom: 0.4rem;
+}
+
+.overview-stat-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--teal);
+}
+
+.overview-stat-value.val-yellow { color: var(--yellow); }
+.overview-stat-value.val-green { color: var(--cp-green); }
+
+/* ---- Process Area ---- */
+
+.career-process-area { display: flex; flex-direction: column; }
+
+/* ---- Process Units ---- */
+
+.career-process-unit {
+  background: var(--cp-panel);
+  border: 1px solid var(--cp-border);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 40%);
+}
+
+.career-process-unit.unit-featured {
+  border-color: var(--yellow-dim);
+  box-shadow: 0 2px 20px rgb(232 180 74 / 10%);
+}
+
+.career-process-unit.unit-current {
+  border-color: var(--cp-green-border);
+  box-shadow: 0 2px 20px rgb(32 192 64 / 10%);
+}
+
+.career-process-unit.unit-bypass {
+  background: var(--cp-bypass-bg);
+  border: 1px dashed var(--cp-bypass-border);
+  box-shadow: none;
+}
+
+/* Unit header */
+
+.unit-hdr {
+  padding: 0.55rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--cp-header);
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.unit-featured .unit-hdr {
+  background: var(--cp-header-feat);
+  border-bottom-color: #3a2800;
+}
+
+.unit-current .unit-hdr {
+  background: var(--cp-header-cur);
+  border-bottom-color: #1a4028;
+}
+
+.unit-bypass .unit-hdr {
+  background: var(--cp-header-bypass);
+  border-bottom-color: var(--cp-bypass-border);
+}
+
+.unit-hdr-id {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.44rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.unit-featured .unit-hdr-id { color: var(--yellow-dim); }
+.unit-current .unit-hdr-id { color: #2a6040; }
+.unit-bypass .unit-hdr-id { color: #3a4048; }
+
+.unit-hdr-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.unit-featured .unit-hdr-name { color: var(--yellow); }
+.unit-current .unit-hdr-name { color: var(--cp-green); }
+.unit-bypass .unit-hdr-name { color: #555c68; }
+
+.unit-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.1em;
+  padding: 0.18rem 0.55rem;
+  text-transform: uppercase;
+  border: 1px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-complete {
+  background: rgb(255 255 255 / 3%);
+  border-color: var(--cp-border);
+  color: var(--gray-dim);
+}
+
+.badge-key {
+  background: rgb(232 180 74 / 8%);
+  border-color: var(--yellow-dim);
+  color: var(--yellow);
+}
+
+.badge-event {
+  background: rgb(232 180 74 / 14%);
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+.badge-active {
+  background: rgb(32 192 64 / 12%);
+  border-color: var(--cp-green-border);
+  color: var(--cp-green);
+  animation: career-pulse 1.5s ease-in-out infinite;
+}
+
+.badge-bypass {
+  background: transparent;
+  border-color: #363c46;
+  color: #3a4048;
+}
+
+/* Unit body — telemetry + notes */
+
+.unit-body {
+  padding: 0.8rem;
+  display: grid;
+  grid-template-columns: 195px 1fr;
+  gap: 0.7rem;
+}
+
+/* Telemetry table */
+
+.telem-table {
+  background: var(--cp-inner);
+  border: 1px solid var(--cp-border);
+  font-family: 'Space Mono', monospace;
+}
+
+.telem-table-hdr {
+  background: var(--cp-header);
+  padding: 0.28rem 0.55rem;
+  font-size: 0.42rem;
+  letter-spacing: 0.15em;
+  color: var(--teal-dim);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.telem-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--cp-sub-border);
+}
+
+.telem-row:last-child { border-bottom: none; }
+
+.telem-label {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.42rem;
+  letter-spacing: 0.05em;
+  color: var(--cp-label);
+  border-right: 1px solid var(--cp-sub-border);
+  background: var(--cp-panel);
+}
+
+.telem-value {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.44rem;
+  font-weight: bold;
+  color: var(--teal);
+  background: var(--cp-inner);
+}
+
+.telem-value.tv-yellow { color: var(--yellow); background: rgb(232 180 74 / 5%); }
+.telem-value.tv-green { color: var(--cp-green); }
+.telem-value.tv-dim { color: var(--gray-dim); font-weight: normal; }
+.telem-value.tv-highlight { background: rgb(232 180 74 / 16%); color: var(--yellow); }
+
+/* Process notes panel */
+
+.unit-notes {
+  background: var(--cp-notes-bg);
+  border: 1px solid var(--cp-border);
+  padding: 0.65rem 0.85rem;
+}
+
+.unit-current .unit-notes {
+  background: #071420;
+  border-color: #1a3028;
+}
+
+.notes-hdr {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.15em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--teal-dim);
+}
+
+.unit-current .notes-hdr {
+  color: var(--cp-green);
+  border-bottom-color: #1a4028;
+}
+
+.notes-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--cp-notes-text);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+.unit-current .notes-text { color: #70c090; }
+
+/* Bypass unit special layout */
+
+.unit-bypass-body {
+  padding: 0.9rem 1rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.bypass-indicator {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #303840;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bypass-indicator-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.38rem;
+  color: #3a4250;
+  text-align: center;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+.bypass-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.49rem;
+  color: var(--cp-bypass-text);
+  line-height: 1.95;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Flow Connectors ---- */
+
+.career-flow-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.flow-connector-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.flow-line {
+  width: 3px;
+  height: 30px;
+  background: linear-gradient(to bottom, var(--teal), var(--teal-dim));
+}
+
+.flow-line.flow-dim { background: linear-gradient(to bottom, var(--teal-dim), #303840); }
+.flow-line.flow-green { background: linear-gradient(to bottom, var(--teal), #40c060); }
+
+.flow-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--teal);
+}
+
+.flow-arrow.flow-dim { border-top-color: #303840; }
+.flow-arrow.flow-green { border-top-color: #40c060; }
+
+.flow-connector-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.42rem;
+  color: var(--teal-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: absolute;
+  left: calc(50% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.flow-connector-label.label-dim { color: #353c48; }
+.flow-connector-label.label-green { color: #306040; }
+
+/* ---- Notable Events Log ---- */
+
+.career-events-panel {
+  background: var(--cp-panel);
+  border: 1px solid var(--yellow-dim);
+  box-shadow: 0 2px 20px rgb(232 180 74 / 8%);
+  margin-top: 2rem;
+}
+
+.career-events-hdr {
+  background: var(--cp-events-hdr);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--yellow-dim);
+}
+
+.career-events-body {
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 72px 142px 1fr 82px;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--cp-inner);
+  border: 1px solid var(--cp-border);
+  padding: 0.45rem 0.7rem;
+}
+
+.event-time {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.44rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.05em;
+}
+
+.event-source {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.44rem;
+  color: var(--yellow-dim);
+  letter-spacing: 0.04em;
+}
+
+.event-message {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.44rem;
+  color: var(--cp-label);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.event-state {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.42rem;
+  padding: 0.18rem 0.4rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.event-ack {
+  background: rgb(74 184 200 / 10%);
+  color: var(--teal-dim);
+  border: 1px solid var(--teal-dim);
+}
+
+.event-notable {
+  background: rgb(232 180 74 / 12%);
+  color: var(--yellow);
+  border: 1px solid var(--yellow-dim);
+}
+
+/* ---- Responsive ---- */
+
+@media (width <= 1100px) {
+  .career-masthead-inner,
+  .career-canvas {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (width <= 900px) {
+  .career-masthead-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .career-masthead-right { align-items: flex-start; }
+
+  .career-canvas { padding: 1.5rem 2rem 3rem; }
+
+  .career-overview-cells { grid-template-columns: repeat(3, 1fr); }
+
+  .overview-stat-cell:nth-child(3) { border-right: none; }
+
+  .overview-stat-cell:nth-child(4),
+  .overview-stat-cell:nth-child(5) { border-top: 1px solid var(--cp-border); }
+
+  .unit-body { grid-template-columns: 1fr; }
+
+  .flow-connector-label { display: none; }
+
+  .event-row { grid-template-columns: 64px 1fr 76px; }
+
+  .event-source { display: none; }
+}
+
+@media (width <= 600px) {
+  .career-overview-cells { grid-template-columns: 1fr 1fr; }
+
+  .overview-stat-cell:nth-child(2) { border-right: none; }
+
+  .overview-stat-cell:nth-child(3),
+  .overview-stat-cell:nth-child(4),
+  .overview-stat-cell:nth-child(5) { border-top: 1px solid var(--cp-border); }
+
+  .event-row { grid-template-columns: 1fr 70px; grid-template-rows: auto auto; }
+
+  .event-time { font-size: 0.4rem; }
+
+  .event-message { grid-column: 1 / -1; }
+}

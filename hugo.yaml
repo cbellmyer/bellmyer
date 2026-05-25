@@ -28,13 +28,13 @@ disableKinds:
 menu:
   main:
     - name: Story
-      url: /content/story/
+      url: /story/
       weight: 5
     - name: Career
-      url: /content/career/
+      url: /career/
       weight: 10
     - name: Toolkit
-      url: /content/toolkit/
+      url: /toolkit/
       weight: 15
     - name: GitHub
       url: "https://github.com/bellmyer"
