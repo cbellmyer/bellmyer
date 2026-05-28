@@ -53,6 +53,10 @@ Process calculators for wastewater operations:
 
 Each calculator includes inputs, a yellow result readout, and a Process Impact description explaining what the number means in field terms. Also includes a Local Station Telemetry widget (live weather).
 
+**Interactive Process Decision Matrix:** An SVG flow diagram of the full treatment train — liquids line (Headworks through Disinfection) and solids handling (GBT / Gravity Thickeners → Sludge Storage → Digesters → P-Precip → Centrifuges → ANAMMOX / Thermal Dryers). Clicking any process unit opens a side panel with common issues, quick diagnostic checks, and solutions. WAS and primary sludge routing are color-coded (teal and gray). Digester biogas line routes to Thermal Dryers.
+
+**Conversions & Constants:** Live unit-converter (MGD → GPM, GPH, CFS, L/s, and mass loading) and temperature converter (°F ↔ °C with dissolved oxygen saturation via Benson & Krause formula), implemented as reusable web components.
+
 ---
 
 ## Layout System
@@ -64,6 +68,7 @@ Project-level template overrides live in `content/layouts/` and take precedence 
 | `content/layouts/partials/header.html` | Adds hamburger nav toggle for mobile |
 | `content/layouts/partials/footer.html` | Footer with copyright + tagline |
 | `content/layouts/partials/extend_head.html` | Removes favicon; loads Google Fonts |
+| `content/layouts/partials/process-decision-matrix.html` | SVG process flow diagram with clickable nodes, side-panel troubleshooting data, and all process JS |
 | `content/layouts/toolkit/single.html` | Standalone full-width toolkit page (bypasses theme's 720px content constraint) |
 
 Styles are in `content/assets/css/extended/bellmyer.css`.
