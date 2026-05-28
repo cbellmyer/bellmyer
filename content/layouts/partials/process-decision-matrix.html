@@ -1,0 +1,109 @@
+<!-- Process Decision Matrix Partial -->
+<div class="pdm-container">
+  <div class="pdm-flow-diagram">
+    <div class="pdm-title">Wastewater Treatment Process</div>
+    <svg class="pdm-flow-svg" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid meet">
+      <g class="pdm-liquids-line">
+        <text x="700" y="30" text-anchor="middle" class="pdm-section-label">LIQUIDS TREATMENT</text>
+        <circle cx="50" cy="120" r="30" class="pdm-node"></circle>
+        <text x="50" y="125" text-anchor="middle" class="pdm-node-text">In</text>
+        <line x1="80" y1="120" x2="150" y2="120" class="pdm-flow-line"></line>
+        <rect x="150" y="90" width="80" height="60" class="pdm-node-box" data-section="headworks"></rect>
+        <text x="190" y="120" text-anchor="middle" class="pdm-node-label">Headworks</text>
+        <text x="190" y="133" text-anchor="middle" class="pdm-node-sublabel">(Bar Screens)</text>
+        <line x1="230" y1="120" x2="300" y2="120" class="pdm-flow-line"></line>
+        <rect x="300" y="90" width="80" height="60" class="pdm-node-box" data-section="grit"></rect>
+        <text x="340" y="120" text-anchor="middle" class="pdm-node-label">Grit Chamber</text>
+        <text x="340" y="133" text-anchor="middle" class="pdm-node-sublabel">(Classifiers)</text>
+        <line x1="380" y1="120" x2="450" y2="120" class="pdm-flow-line"></line>
+        <rect x="450" y="90" width="80" height="60" class="pdm-node-box" data-section="primary"></rect>
+        <text x="490" y="120" text-anchor="middle" class="pdm-node-label">Primary</text>
+        <text x="490" y="133" text-anchor="middle" class="pdm-node-sublabel">Clarifiers</text>
+        <line x1="530" y1="120" x2="600" y2="120" class="pdm-flow-line"></line>
+        <rect x="600" y="90" width="80" height="60" class="pdm-node-box" data-section="reactor"></rect>
+        <text x="640" y="120" text-anchor="middle" class="pdm-node-label">Process</text>
+        <text x="640" y="133" text-anchor="middle" class="pdm-node-sublabel">Reactors</text>
+        <line x1="680" y1="120" x2="750" y2="120" class="pdm-flow-line"></line>
+        <rect x="750" y="90" width="80" height="60" class="pdm-node-box" data-section="final"></rect>
+        <text x="790" y="120" text-anchor="middle" class="pdm-node-label">Final</text>
+        <text x="790" y="133" text-anchor="middle" class="pdm-node-sublabel">Clarifiers</text>
+        <line x1="830" y1="120" x2="900" y2="120" class="pdm-flow-line"></line>
+        <rect x="900" y="90" width="80" height="60" class="pdm-node-box" data-section="denit"></rect>
+        <text x="940" y="120" text-anchor="middle" class="pdm-node-label">Denitrification</text>
+        <text x="940" y="133" text-anchor="middle" class="pdm-node-sublabel">Filters</text>
+        <line x1="980" y1="120" x2="1050" y2="120" class="pdm-flow-line"></line>
+        <rect x="1050" y="90" width="100" height="60" class="pdm-node-box" data-section="disinfection"></rect>
+        <text x="1100" y="120" text-anchor="middle" class="pdm-node-label">Disinfection</text>
+        <text x="1100" y="133" text-anchor="middle" class="pdm-node-sublabel">(UV/Chlorine)</text>
+        <line x1="1150" y1="120" x2="1220" y2="120" class="pdm-flow-line"></line>
+        <circle cx="1280" cy="120" r="30" class="pdm-node"></circle>
+        <text x="1280" y="125" text-anchor="middle" class="pdm-node-text">Out</text>
+      </g>
+      <g class="pdm-solids-line">
+        <text x="700" y="250" text-anchor="middle" class="pdm-section-label">SOLIDS HANDLING</text>
+        <!-- Primary Clarifier → GT (gray) -->
+        <line x1="490" y1="150" x2="490" y2="300" class="pdm-flow-line"></line>
+        <line x1="490" y1="300" x2="105" y2="300" class="pdm-flow-line"></line>
+        <line x1="105" y1="300" x2="105" y2="310" class="pdm-flow-line"></line>
+        <!-- Final Clarifier → GBT (teal) -->
+        <line x1="790" y1="150" x2="790" y2="190" class="pdm-flow-line pdm-split-line"></line>
+        <line x1="790" y1="190" x2="105" y2="190" class="pdm-flow-line pdm-split-line"></line>
+        <line x1="105" y1="190" x2="105" y2="200" class="pdm-flow-line pdm-split-line"></line>
+        <!-- GBT stacked above main line -->
+        <rect x="50" y="200" width="110" height="55" class="pdm-node-box" data-section="gbt"></rect>
+        <text x="105" y="222" text-anchor="middle" class="pdm-node-label">Gravity Belt</text>
+        <text x="105" y="235" text-anchor="middle" class="pdm-node-sublabel">Thickening</text>
+        <!-- GT stacked below main line -->
+        <rect x="50" y="310" width="110" height="55" class="pdm-node-box" data-section="grav-thick"></rect>
+        <text x="105" y="332" text-anchor="middle" class="pdm-node-label">Gravity</text>
+        <text x="105" y="345" text-anchor="middle" class="pdm-node-sublabel">Thickeners</text>
+        <!-- GBT and GT outputs merge into Sludge Storage (THS) -->
+        <line x1="160" y1="227" x2="195" y2="227" class="pdm-flow-line"></line>
+        <line x1="195" y1="227" x2="195" y2="280" class="pdm-flow-line"></line>
+        <line x1="160" y1="337" x2="195" y2="337" class="pdm-flow-line"></line>
+        <line x1="195" y1="337" x2="195" y2="280" class="pdm-flow-line"></line>
+        <line x1="195" y1="280" x2="220" y2="280" class="pdm-flow-line"></line>
+        <!-- Sludge Storage (THS) -->
+        <rect x="220" y="255" width="120" height="55" class="pdm-node-box" data-section="sludge-storage"></rect>
+        <text x="280" y="277" text-anchor="middle" class="pdm-node-label">Sludge Storage</text>
+        <text x="280" y="290" text-anchor="middle" class="pdm-node-sublabel">(THS)</text>
+        <line x1="340" y1="280" x2="570" y2="280" class="pdm-flow-line"></line>
+        <!-- Digesters -->
+        <rect x="570" y="280" width="80" height="60" class="pdm-node-box" data-section="digest"></rect>
+        <text x="610" y="310" text-anchor="middle" class="pdm-node-label">Digesters</text>
+        <line x1="650" y1="280" x2="690" y2="280" class="pdm-flow-line"></line>
+        <!-- P-Precip -->
+        <rect x="690" y="280" width="80" height="60" class="pdm-node-box" data-section="phos-precip"></rect>
+        <text x="730" y="310" text-anchor="middle" class="pdm-node-label">P-Precip</text>
+        <!-- P-Precip → Centrifuges (DSS removed) -->
+        <line x1="770" y1="280" x2="910" y2="280" class="pdm-flow-line"></line>
+        <!-- Centrifuges -->
+        <rect x="910" y="280" width="80" height="60" class="pdm-node-box" data-section="centrifuge"></rect>
+        <text x="950" y="310" text-anchor="middle" class="pdm-node-label">Centrifuges</text>
+        <line x1="950" y1="340" x2="950" y2="380" class="pdm-flow-line pdm-split-line"></line>
+        <line x1="990" y1="340" x2="1050" y2="340" class="pdm-flow-line pdm-split-line"></line>
+        <!-- ANAMMOX -->
+        <rect x="910" y="380" width="80" height="60" class="pdm-node-box" data-section="eq-tank"></rect>
+        <text x="950" y="410" text-anchor="middle" class="pdm-node-label">ANAMMOX</text>
+        <!-- Thermal Dryers -->
+        <rect x="1050" y="310" width="80" height="60" class="pdm-node-box" data-section="dryer"></rect>
+        <text x="1090" y="340" text-anchor="middle" class="pdm-node-label">Thermal Dryers</text>
+        <text x="1090" y="353" text-anchor="middle" class="pdm-node-sublabel">(Class A/B)</text>
+        <!-- Biogas from Digesters -->
+        <path d="M 610 280 L 610 265 L 1090 265 L 1090 310" class="pdm-flow-line pdm-biogas-line" stroke-dasharray="5,5"></path>
+      </g>
+    </svg>
+  </div>
+  <div class="pdm-decision-panel" id="pdm-panel">
+    <div class="pdm-panel-header">
+      <button class="pdm-close-btn" id="pdm-close">×</button>
+      <h3 id="pdm-section-name"></h3>
+    </div>
+    <div class="pdm-panel-content" id="pdm-content"></div>
+  </div>
+</div>
+
+<script>
+var processData={headworks:{name:"Headworks (Bar Screens)",description:"Primary screening removes large solids and debris",common_issues:[{title:"Screen Blinding",checks:["Visual inspection for accumulated rags","Monitor differential pressure across screens","Check screen wash pump operation"],solutions:["Increase screen wash frequency if pressure drop exceeds 2-3 psi","Inspect screen wash nozzles for blockage","Verify rake mechanism is clearing screenings properly"]}]},grit:{name:"Grit Chamber",description:"Removes sand, silt, and inorganic solids",common_issues:[{title:"Grit Not Settling",checks:["Verify flow entering grit chamber","Check for excessive turbulence","Measure grit removal mass"],solutions:["Reduce flow if exceeding HRT","Inspect baffles for wear","Check classifier blade speed (typically 3-8 rpm)"]}]},primary:{name:"Primary Clarifiers",description:"Removes settleable and floatable solids",common_issues:[{title:"High Effluent TSS",checks:["Measure surface loading rate","Inspect weir height and alignment","Monitor sludge blanket depth"],solutions:["Reduce influent flow if exceeding design","Inspect and adjust weir to correct height","If blanket too high, increase sludge withdrawal rate"]}]},reactor:{name:"Process Reactors",description:"Biological treatment removes BOD and nutrients",common_issues:[{title:"MLSS Too High",checks:["Measure MLSS concentration","Calculate F/M ratio","Check RAS rate"],solutions:["Increase wasting (WAS) flow","Reduce RAS return rate","Verify BOD load estimate"]}]},final:{name:"Final Clarifiers",description:"Polishing step to ensure clear effluent",common_issues:[{title:"Rising Sludge",checks:["Observe sludge at surface during mid-day","Check for denitrification occurring","Measure SVI from basin"],solutions:["Increase sludge withdrawal rate","Lower retention time","If SVI poor, check biomass settling"]}]},denit:{name:"Denitrification Filters",description:"Polish and remove residual nitrogen",common_issues:[{title:"High Headloss",checks:["Measure differential pressure","Inspect filter media for clogging","Check backwash frequency"],solutions:["Increase backwash frequency (1-2 times daily)","Inspect media condition for degradation","Verify backwash rate is adequate"]}]},disinfection:{name:"Disinfection",description:"Kills pathogens and meets permit requirements",common_issues:[{title:"UV Lamp Fouling",checks:["Check UV transmittance (UVT)","Inspect quartz sleeves","Monitor lamp output"],solutions:["Clean quartz sleeves if UVT drops below 70%","Replace lamps per manufacturer schedule","Install clarification if UVT chronically low"]}]},gbt:{name:"Gravity Belt Thickening",description:"Mechanical thickening removes water from sludge",common_issues:[{title:"Low Cake Solids",checks:["Measure cake TS%","Inspect belt tensioning","Check feed solids and polymer dose"],solutions:["Increase polymer dosing","Adjust belt speed if available","Increase feed concentration if dilute"]}]},["grav-thick"]:{name:"Gravity Thickeners",description:"Gravitational settling concentrates sludge",common_issues:[{title:"Poor Thickening",checks:["Measure underflow solids concentration","Check surface loading rate","Inspect rake mechanism"],solutions:["Reduce feed rate if exceeding design SLR","Increase rake speed incrementally","Verify sludge withdrawal pump operation"]}]},digest:{name:"Digesters",description:"Stabilizes sludge and generates biogas",common_issues:[{title:"Poor Gas Production",checks:["Monitor gas meter daily","Check for reduced feed quality","Measure digester temperature"],solutions:["Verify feed is reaching digester","If temperature low, increase heating","Test feed solids concentration"]}]},["phos-precip"]:{name:"Phosphorus Precipitation",description:"Removes phosphorus for resource recovery",common_issues:[{title:"High Effluent Phosphorus",checks:["Measure orthophosphate concentration","Verify chemical dosing pump","Check coagulant type and strength"],solutions:["Increase chemical dose","Verify mixing intensity","Check coagulant hasn't degraded"]}]},centrifuge:{name:"Centrifuges",description:"Mechanically separates centrate from biosolids",common_issues:[{title:"Low Cake Solids%",checks:["Measure cake TS%","Check bowl speed (RPM)","Verify differential speed"],solutions:["Increase bowl speed incrementally","Verify polymer dose","Adjust differential speed"]}]},["eq-tank"]:{name:"ANAMMOX",description:"Biological nitrogen removal via partial nitritation/anammox; treats high-strength centrate ammonia",common_issues:[{title:"High Effluent Ammonia",checks:["Measure ammonia concentration","Check anammox biomass health","Monitor dissolved oxygen"],solutions:["If DO high, increase anoxic volume","If biomass inactive, check feed toxicity","Optimize SRT for anammox growth"]}]},dryer:{name:"Thermal Dryers",description:"Reduces moisture content for final biosolids",common_issues:[{title:"Low Cake Temperature",checks:["Measure outlet cake temperature","Check steam supply pressure and flow","Verify heating element operation"],solutions:["Increase steam pressure if insufficient","Reduce feed rate for longer residence time","Inspect heat exchanger for scaling"]}]}};
+document.addEventListener('DOMContentLoaded',function(){var nodes=document.querySelectorAll('.pdm-node-box');var panel=document.getElementById('pdm-panel');var closeBtn=document.getElementById('pdm-close');var content=document.getElementById('pdm-content');var sectionName=document.getElementById('pdm-section-name');nodes.forEach(function(node){node.addEventListener('click',function(){var section=this.dataset.section;if(processData[section]){displaySection(section);panel.classList.add('active')}})});closeBtn.addEventListener('click',function(){panel.classList.remove('active')});function displaySection(sectionKey){var data=processData[sectionKey];sectionName.textContent=data.name;var html='<div class="pdm-section-info"><p class="pdm-description">'+data.description+'</p></div><div class="pdm-issues">';data.common_issues.forEach(function(issue){html+='<div class="pdm-issue"><button class="pdm-issue-toggle">'+issue.title+'</button><div class="pdm-issue-content" style="display:none;"><div class="pdm-checks"><h5>Quick Checks:</h5><ul>';issue.checks.forEach(function(check){html+='<li>'+check+'</li>'});html+='</ul></div><div class="pdm-solutions"><h5>Solutions:</h5><ul>';issue.solutions.forEach(function(sol){html+='<li>'+sol+'</li>'});html+='</ul></div></div></div>'});html+='</div>';content.innerHTML=html;document.querySelectorAll('.pdm-issue-toggle').forEach(function(btn){btn.addEventListener('click',function(){var issueContent=this.nextElementSibling;var isVisible=issueContent.style.display!=='none';issueContent.style.display=isVisible?'none':'block';this.classList.toggle('active')})})}});
+</script>
