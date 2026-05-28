@@ -914,7 +914,7 @@ body.story {
 .pdm-node-box:hover {
   fill: var(--tertiary);
   stroke: var(--yellow-dim);
-  filter: drop-shadow(0 0 8px rgba(232, 180, 74, 0.4));
+  filter: drop-shadow(0 0 8px rgb(232 180 74 / 40%));
 }
 
 .pdm-node-label {
@@ -957,7 +957,7 @@ body.story {
   height: 100vh;
   background: var(--entry);
   border-left: 2px solid var(--border);
-  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  box-shadow: -10px 0 30px rgb(0 0 0 / 50%);
   display: flex;
   flex-direction: column;
   z-index: 1000;
@@ -1099,7 +1099,7 @@ body.story {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray);
-  margin: 0 0 0.7rem 0;
+  margin: 0 0 0.7rem;
 }
 
 .pdm-checks ul,
@@ -1135,22 +1135,22 @@ body.story {
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .pdm-decision-panel {
     width: 100vw;
     right: -100vw;
   }
-  
+
   .pdm-flow-svg {
     transform: scale(0.85);
     transform-origin: top center;
   }
-  
+
   .pdm-title {
     font-size: 1rem;
     margin-bottom: 1rem;
   }
-  
+
   .pdm-flow-diagram {
     padding: 1rem;
     min-height: 500px;
