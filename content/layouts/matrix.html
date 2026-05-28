@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="dark">
+<head>
+    {{- partial "head.html" . }}
+</head>
+<body class="matrix" id="top">
+    {{- partial "header.html" . -}}
+
+    <div class="mx-masthead">
+        <div class="mx-masthead-inner">
+            <div>
+                <div class="mx-eyebrow">[ Process Decision Matrix ]</div>
+                <h1 class="mx-masthead-title">Wastewater Troubleshooting</h1>
+                <div class="mx-masthead-sub">LPWRP &middot; Liquids &amp; Solids Treatment &middot; Symptom-Driven Diagnostics</div>
+            </div>
+            <div class="mx-masthead-right">
+                <div class="mx-system-status">
+                    <div class="mx-status-dot"></div>
+                    MATRIX ONLINE
+                </div>
+                <div class="mx-clock" id="mx-clock">--:--:--</div>
+            </div>
+        </div>
+        <div class="mx-zone-bar" id="mx-zone-bar"></div>
+    </div>
+
+    <div id="mx-canvas" class="mx-canvas"></div>
+
+    <div class="mx-statusbar" id="mx-statusbar"></div>
+
+    {{- partial "footer.html" . -}}
+
+    <script src="/js/matrix-data-tree.js"></script>
+    <script src="/js/matrix-data-diagnoses.js"></script>
+    <script src="/js/matrix-ui.js"></script>
+</body>
+</html>
