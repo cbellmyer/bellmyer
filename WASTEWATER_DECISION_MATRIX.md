@@ -29,6 +29,7 @@ A comprehensive, interactive troubleshooting guide integrated into your **Operat
 ### Process Coverage
 
 **Liquids Treatment (Influent to Effluent):**
+
 - Headworks (Bar Screens)
 - Grit Chamber (Classifiers & Cyclones)
 - Primary Clarifiers
@@ -38,6 +39,7 @@ A comprehensive, interactive troubleshooting guide integrated into your **Operat
 - Disinfection (UV, Chlorine, Bisulfate)
 
 **Solids Handling (Sludge Management):**
+
 - Gravity Belt Thickening
 - Gravity Thickeners
 - Cake Feed Cells
@@ -89,83 +91,99 @@ A comprehensive, interactive troubleshooting guide integrated into your **Operat
 ## Troubleshooting Examples Included
 
 ### Headworks (Bar Screens)
+
 - Screen Blinding
 - Equipment Noise/Vibration
 - Incomplete Screening
 
 ### Grit Chamber
+
 - Grit Not Settling
 - Cyclone Discharge Issues
 - Organic Matter in Grit
 
 ### Primary Clarifiers
+
 - High Effluent TSS
 - Sludge Odor/Septic Conditions
 - Grease/Scum Layer Buildup
 
 ### Process Reactors
+
 - MLSS Too High
 - MLSS Too Low
 - Poor Nitrification
 - Denitrification Insufficient
 
 ### Final Clarifiers
+
 - Rising Sludge
 - High Effluent TSS
 - Solids Carryover to Filters
 
 ### Denitrification Filters
+
 - High Headloss
 - Poor Effluent Quality
 - Filter Media Deterioration
 
 ### Disinfection
+
 - UV Lamp Fouling
 - Chlorine Residual Issues
 - Bisulfate Dechlorination Imbalance
 
 ### Gravity Belt Thickening
+
 - Low Cake Solids
 - Cake Runoff/Turbidity
 - Belt Wear or Plugging
 
 ### Gravity Thickeners
+
 - Poor Thickening
 - Floating Grease/Scum
 - Rising Sludge / Septic Odor
 
 ### Cake Feed Cells
+
 - Cell Overflow
 - Sludge Not Feeding Digesters
 - Odor Generation
 
 ### Digesters
+
 - Poor Gas Production
 - Digester Upset (VFA Spike)
 - Biogas Line Blockage
 
 ### Phosphorus Precipitation
+
 - High Effluent Phosphorus
 - Excessive Sludge Production
 - Precipitate Not Settling
 
 ### DSS
+
 - High Return Ammonia
 - Solid Separation Issues
 - DSS Unit Not Operating
 
 ### Centrifuges
+
 - Low Cake Solids%
 - High Centrate TSS
 - Vibration/Noise
 - Centrate Pump Cavitation
 
 ### EQ Tanks (Anammox)
+
 - High Effluent Ammonia
 - Nitritation Imbalance
 - Odor / Tank Contents Look Off
 
 ### Thermal Dryers
+
 - Low Cake Temperature / Inadequate Drying
 - High Moisture in Final Biosolids
 - Odor from Dryer
@@ -187,6 +205,7 @@ A comprehensive, interactive troubleshooting guide integrated into your **Operat
 ### For Your Portfolio
 
 This tool demonstrates:
+
 - **Process Engineering Knowledge**: Comprehensive understanding of wastewater treatment plant operations
 - **Problem-Solving Mindset**: Structured troubleshooting approach across 13 major process areas
 - **Technical Communication**: Ability to make complex systems accessible
@@ -204,6 +223,7 @@ In any Hugo markdown file, use:
 ```
 
 The shortcode includes:
+
 - Self-contained HTML, CSS, and JavaScript
 - No external dependencies
 - Uses CSS variables from theme (colors, fonts)
@@ -212,6 +232,7 @@ The shortcode includes:
 ### CSS Classes
 
 All PDM classes are prefixed with `pdm-` to avoid conflicts:
+
 - `.pdm-container`: Main wrapper
 - `.pdm-flow-diagram`: SVG container
 - `.pdm-node-box`: Clickable process units
@@ -296,11 +317,11 @@ Output will be in `public/`.
 
 ## Files Modified
 
-| File | Changes |
-|------|---------|
+| File                                                       | Changes                                                        |
+| ---------------------------------------------------------- | -------------------------------------------------------------- |
 | `/content/layouts/shortcodes/process-decision-matrix.html` | **Created** - Full shortcode with SVG, data, and interactivity |
-| `/content/layouts/toolkit.html` | Added new section + `{{< process-decision-matrix >}}` call |
-| `/content/assets/css/extended/bellmyer.css` | Added `.pdm-section-wrapper` and `.pdm-intro` styles |
+| `/content/layouts/toolkit.html`                            | Added new section + `{{< process-decision-matrix >}}` call     |
+| `/content/assets/css/extended/bellmyer.css`                | Added `.pdm-section-wrapper` and `.pdm-intro` styles           |
 
 ## Notes
 
