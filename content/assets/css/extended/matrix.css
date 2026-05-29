@@ -3,6 +3,9 @@
    All classes prefixed mx- to avoid conflicts.
    ============================================================ */
 
+/* Prevent any element on the matrix page from causing horizontal page scroll */
+body.matrix { overflow-x: hidden; }
+
 /* ── Masthead ──────────────────────────────────────────────── */
 .mx-masthead {
   background: linear-gradient(180deg, #0c1420 0%, var(--theme) 100%);
@@ -624,9 +627,9 @@
 
 .mx-zone-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 0.75rem;
-  max-width: 860px;
+  max-width: 760px;
   margin: 1.75rem auto 0;
   text-align: left;
 }
