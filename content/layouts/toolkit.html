@@ -123,16 +123,31 @@
             </div>
         </div>
 
-        <!-- PROCESS DECISION MATRIX -->
+        <!-- PROCESS DECISION MATRIX — now a dedicated page at /matrix/ -->
         <div class="tk-section">
             <div class="tk-section-hdr">
                 <span class="tk-section-label">[ Troubleshooting Guide ]</span>
                 <span class="tk-section-title">Interactive Process Decision Matrix</span>
             </div>
-            <div class="pdm-section-wrapper">
-                <p class="pdm-intro">Click any process unit below to explore common operating issues, diagnostic checks, and solution steps. The matrix covers both liquids treatment and solids handling from headworks through final biosolids disposal.</p>
-                {{ partial "process-decision-matrix.html" . }}
-            </div>
+            <a href="/matrix/" class="mx-toolkit-cta">
+                <div class="mx-cta-text">
+                    <div class="mx-cta-label">[ Interactive Diagnostic ]</div>
+                    <div class="mx-cta-title">Process Decision Matrix</div>
+                    <div class="mx-cta-desc">Symptom-driven troubleshooting across all treatment zones &mdash; headworks through final effluent. Select a symptom and follow the diagnostic path to causes and corrective actions.</div>
+                    <div class="mx-cta-zones">
+                        <span class="mx-cta-zone-chip">HW &middot; Headworks</span>
+                        <span class="mx-cta-zone-chip">INF &middot; Influent</span>
+                        <span class="mx-cta-zone-chip">PRI &middot; Primary</span>
+                        <span class="mx-cta-zone-chip">AER &middot; Aeration</span>
+                        <span class="mx-cta-zone-chip">SEC &middot; Clarifier</span>
+                        <span class="mx-cta-zone-chip">SOL &middot; Solids</span>
+                        <span class="mx-cta-zone-chip">DNF &middot; DN Filters</span>
+                        <span class="mx-cta-zone-chip">DIS &middot; Disinfection</span>
+                        <span class="mx-cta-zone-chip">EFF &middot; Effluent</span>
+                    </div>
+                </div>
+                <div class="mx-cta-arrow">&rarr;</div>
+            </a>
         </div>
 
         <!-- QUICK REFERENCE -->
