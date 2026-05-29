@@ -96,7 +96,8 @@ body.matrix { overflow-x: hidden; }
   overflow-x: auto;
   scrollbar-width: none;
   margin-top: 0.75rem;
-  width: 100%; /* explicit bound so flex overflow stays inside the bar */
+  width: 100%;
+  min-width: 0; /* allow flex container to shrink below children's min-content */
 }
 .mx-zone-bar::-webkit-scrollbar { display: none; }
 
@@ -157,9 +158,14 @@ body.matrix { overflow-x: hidden; }
   /* Hide decorative clock/status — saves vertical space on phone */
   .mx-masthead-right { display: none; }
 
-  /* Zone grid: 2 columns always on mobile */
-  .mx-zone-grid { grid-template-columns: repeat(2, 1fr); }
-  .mx-no-zone { padding: 1.5rem 1rem; }
+  /* Zone grid: 2 columns always on mobile, no max-width cap or auto margins */
+  .mx-zone-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mx-no-zone { padding: 1.5rem 0.75rem; }
 
   /* Touch-friendly tap targets (min 44px) */
   .mx-symptom-item { padding: 0.85rem 0.9rem; min-height: 44px; font-size: 0.82rem; }
