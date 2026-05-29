@@ -99,6 +99,8 @@ function selectSymptom(symId) {
   state.diagnosisId = null;
   renderCanvas();
   updateStatusBar();
+  var canvas = document.getElementById('mx-canvas');
+  if (canvas) canvas.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /* Called by numbered option buttons via onclick="handleOption(i)" */
@@ -256,6 +258,7 @@ function renderDiagnosis(symptom, diagId) {
 /* ── No-Zone Splash ──────────────────────────────────────────────── */
 
 function renderNoZone(canvas) {
+  canvas.dataset.state = 'no-zone';
   var cards = MX_ZONES.map(function(z) {
     return '<button class="mx-zone-card" onclick="selectZone(\'' + z.id + '\')">' +
       '<span class="mx-zone-card-abbr">' + escHtml(z.abbr) + '</span>' +
@@ -328,6 +331,7 @@ function renderTwoCol(canvas) {
     }
   }
 
+  canvas.dataset.state = state.symptomId ? 'active' : 'idle';
   canvas.innerHTML = leftPanel + '<div class="mx-diag-col">' + rightHtml + '</div>';
 }
 
