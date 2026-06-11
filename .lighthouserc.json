@@ -1,0 +1,15 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "content/public",
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/story/index.html",
+        "http://localhost/career/index.html",
+        "http://localhost/matrix/index.html",
+        "http://localhost/toolkit/index.html"
+      ],
+      "numberOfRuns": 1
+    }
+  }
+}
