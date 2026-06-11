@@ -57,10 +57,19 @@ jobs:
         if: github.event.pull_request.head.repo.full_name == github.repository
         uses: actions/github-script@v9
         env:
-          MANIFEST: ${{ steps.lighthouse.outputs.manifest }}
+          RESULTS_PATH: ${{ steps.lighthouse.outputs.resultsPath }}
         with:
           script: |
-            const manifest = JSON.parse(process.env.MANIFEST || "[]");
+            const fs = require("fs");
+            const path = require("path");
+            const manifestPath = path.join(
+              process.env.RESULTS_PATH, "manifest.json"
+            );
+            if (!fs.existsSync(manifestPath)) {
+              core.warning(`No Lighthouse manifest at ${manifestPath}`);
+              return;
+            }
+            const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
             const fmt = (score) => {
               const value = Math.round(score * 100);
               const icon = value >= 90 ? "🟢" : value >= 50 ? "🟡" : "🔴";
