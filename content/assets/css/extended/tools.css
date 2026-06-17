@@ -101,6 +101,13 @@ body.tools {
   background: rgb(232 180 74 / 8%);
 }
 
+.tools-ext-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 /* ---- Canvas ---- */
 
 .tools-canvas {
@@ -203,6 +210,196 @@ body.tools {
   margin-top: 0.2rem;
 }
 
+/* ---- Module grid ---- */
+
+.tools-module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--tools-border);
+  border: 1px solid var(--tools-border);
+}
+
+.tools-module {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: var(--tools-panel);
+  padding: 1.5rem 1.6rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.tools-module:hover {
+  background: var(--tools-inner);
+}
+
+.tools-module-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tools-module-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.15em;
+  color: var(--tools-label);
+  text-transform: uppercase;
+}
+
+.tools-module-count {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+.tools-module-count-dev {
+  color: var(--gray-dim);
+}
+
+.tools-module-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.tools-module-desc {
+  font-family: Barlow, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--secondary);
+  flex-grow: 1;
+}
+
+.tools-module-go {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+/* ---- Calculator index ---- */
+
+.tools-calc-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--tools-border);
+  border: 1px solid var(--tools-border);
+  max-width: 720px;
+}
+
+.tools-calc-group {
+  background: var(--tools-panel);
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+
+.tools-calc-group-hdr {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.tools-calc-group-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--teal);
+  letter-spacing: 0.03em;
+}
+
+.tools-calc-group-n {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--tools-label);
+  letter-spacing: 0.08em;
+}
+
+.tools-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tools-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.04em;
+  color: var(--secondary);
+  background: var(--tools-hdr);
+  border: 1px solid var(--tools-border);
+  padding: 0.3rem 0.55rem;
+}
+
+/* ---- Resource links ---- */
+
+.tools-resources {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--tools-border);
+  border: 1px solid var(--tools-border);
+  max-width: 720px;
+}
+
+.tools-resource {
+  display: grid;
+  grid-template-columns: 9rem 1fr auto;
+  align-items: center;
+  gap: 0.25rem 1.2rem;
+  background: var(--tools-panel);
+  padding: 1rem 1.4rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.tools-resource:hover {
+  background: var(--tools-inner);
+}
+
+.tools-resource-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+.tools-resource-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+
+.tools-resource-desc {
+  grid-column: 2;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.tools-resource-go {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--teal);
+}
+
 /* ---- CTA ---- */
 
 .tools-cta-wrap {
@@ -276,6 +473,10 @@ body.tools {
   .tools-stack-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .tools-module-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (width <= 600px) {
@@ -292,5 +493,26 @@ body.tools {
   .tools-cta {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .tools-resource {
+    grid-template-columns: 1fr auto;
+  }
+
+  .tools-resource-label {
+    grid-column: 1;
+  }
+
+  .tools-resource-name {
+    grid-column: 1;
+  }
+
+  .tools-resource-desc {
+    grid-column: 1;
+  }
+
+  .tools-resource-go {
+    grid-column: 2;
+    grid-row: 1 / span 3;
   }
 }
