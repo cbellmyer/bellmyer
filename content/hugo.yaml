@@ -33,12 +33,9 @@ menu:
     - name: Career
       url: /career/
       weight: 10
-    - name: Toolkit
-      url: /toolkit/
+    - name: wwtp.tools
+      url: /tools/
       weight: 15
-    - name: Matrix
-      url: /matrix/
-      weight: 17
     - name: GitHub
       url: "https://github.com/cbellmyer"
       weight: 20
