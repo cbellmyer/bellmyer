@@ -6,6 +6,13 @@
 <body class="career" id="top">
     {{- partial "header.html" . -}}
 
+    <!-- Print-only résumé header -->
+    <div class="career-print-header">
+        <div class="cph-name">Chris Bellmyer</div>
+        <div class="cph-title">Wastewater Reclamation Plant Operator III · Maryland Wastewater 5A Licensed</div>
+        <div class="cph-contact">chris.bellmyer@proton.me · linkedin.com/in/cbellmyer · github.com/cbellmyer · bellmyer.com</div>
+    </div>
+
     <div class="career-masthead">
         <div class="career-masthead-inner">
             <div>
@@ -28,9 +35,10 @@
         <div class="career-scada-nav">
             <a href="/" class="scada-btn scada-btn-default">← Home</a>
             <a href="/story/" class="scada-btn scada-btn-default">My Story</a>
-            <a href="/toolkit/" class="scada-btn scada-btn-yellow">Operator Toolkit</a>
+            <a href="/tools/" class="scada-btn scada-btn-yellow">wwtp.tools</a>
             <span class="scada-btn scada-btn-active">Career Overview · Active</span>
             <a href="#notable-events" class="scada-btn scada-btn-default">Notable Events Log ↓</a>
+            <button type="button" class="scada-btn scada-btn-yellow scada-btn-print" onclick="window.print()">⎙ Print / Save Résumé</button>
         </div>
 
         <!-- SYSTEM OVERVIEW -->
@@ -345,7 +353,7 @@
         <div class="career-events-panel" id="notable-events">
             <div class="career-events-hdr">
                 <div class="career-panel-title">Notable Events Log — Career Significant Moments</div>
-                <div class="career-panel-meta">Historical · 4 Events · All Acknowledged</div>
+                <div class="career-panel-meta">Historical · 5 Events · All Acknowledged</div>
             </div>
             <div class="career-events-body">
                 <div class="event-row">
@@ -369,7 +377,13 @@
                 <div class="event-row">
                     <div class="event-time">2026-04</div>
                     <div class="event-source">HCGOV-OPR-01</div>
-                    <div class="event-message">NOTABLE: Maryland Wastewater 5A confirmed — state maximum. B.A. qualification reduced standard 3-yr experience requirement to 2 yrs — license awarded one year early. Operator III active at LPWRP. I→III in under two years. Apprenticeship mentorship initiated. Career loop closed.</div>
+                    <div class="event-message">NOTABLE: Maryland Wastewater 5A confirmed — state maximum. B.A. qualification reduced standard 3-yr experience requirement to 2 yrs — license awarded one year early. Operator III active at LPWRP. I→III in under two years. Apprenticeship mentorship initiated. Foundation set.</div>
+                    <div class="event-state event-notable">Notable</div>
+                </div>
+                <div class="event-row">
+                    <div class="event-time">2026-06</div>
+                    <div class="event-source">WWTP-TOOLS-01</div>
+                    <div class="event-message">NOTABLE: Two skillsets converge. wwtp.tools released — an open-source toolkit built for wastewater operators by an operator who codes. GIS/development discipline from UNIT-02 meets daily plant operations from UNIT-06. Free, no login, no tracking. The self-taught technical capability now serves the operator community directly.</div>
                     <div class="event-state event-notable">Notable</div>
                 </div>
             </div>

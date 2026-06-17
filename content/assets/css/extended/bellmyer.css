@@ -187,6 +187,11 @@ body.home .header #menu .active {
   letter-spacing: 0.06em;
 }
 
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
 .footer a {
   color: var(--gray-dim);
   text-decoration: none;
@@ -828,333 +833,61 @@ body.story {
 }
 
 /* ============================================================
-   PROCESS DECISION MATRIX
+   CONTACT
    ============================================================ */
 
-.pdm-section-wrapper {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0;
-  margin-top: 1.5rem;
-  overflow: hidden;
-}
-
-.pdm-intro {
-  color: var(--secondary);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin: 0;
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.pdm-container {
-  position: relative;
-  width: 100%;
-}
-
-.pdm-flow-diagram {
-  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
-  padding: 2rem;
-  min-height: 600px;
-  overflow-x: auto;
-}
-
-.pdm-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.pdm-flow-svg {
-  width: 100%;
-  max-width: 1400px;
-  height: auto;
-  display: block;
+.contact-section {
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 4rem;
 }
 
-.pdm-section-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  fill: var(--gray);
-  text-transform: uppercase;
-}
-
-.pdm-node {
-  fill: var(--teal);
-  stroke: var(--teal);
-  stroke-width: 2;
-}
-
-.pdm-node-text {
-  fill: var(--theme);
-  font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-anchor: middle;
-  dominant-baseline: middle;
-}
-
-.pdm-node-box {
-  fill: var(--entry);
-  stroke: var(--yellow);
-  stroke-width: 2;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.pdm-node-box:hover {
-  fill: var(--tertiary);
-  stroke: var(--yellow-dim);
-  filter: drop-shadow(0 0 8px rgb(232 180 74 / 40%));
-}
-
-.pdm-node-label {
-  fill: var(--yellow);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-anchor: middle;
-  dominant-baseline: middle;
-}
-
-.pdm-node-sublabel {
-  fill: var(--gray);
-  font-family: 'Space Mono', monospace;
-  font-size: 0.68rem;
-  text-anchor: middle;
-  dominant-baseline: middle;
-}
-
-.pdm-flow-line {
-  stroke: var(--secondary);
-  stroke-width: 2;
-  fill: none;
-}
-
-.pdm-biogas-line {
-  stroke: var(--teal);
-}
-
-.pdm-split-line {
-  stroke: var(--teal);
-}
-
-.pdm-decision-panel {
-  position: fixed;
-  right: -500px;
-  top: 0;
-  width: 500px;
-  max-width: 90vw;
-  height: 100vh;
-  background: var(--entry);
-  border-left: 2px solid var(--border);
-  box-shadow: -10px 0 30px rgb(0 0 0 / 50%);
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-  transition: right 0.3s ease;
-  overflow-y: auto;
-}
-
-.pdm-decision-panel.active {
-  right: 0;
-}
-
-.pdm-panel-header {
-  position: sticky;
-  top: 0;
-  background: linear-gradient(135deg, var(--tertiary) 0%, var(--bg3) 100%);
-  border-bottom: 2px solid var(--border);
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
-.pdm-close-btn {
-  background: none;
-  border: none;
-  color: var(--gray);
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s;
-}
-
-.pdm-close-btn:hover {
-  color: var(--yellow);
-}
-
-.pdm-panel-header h3 {
-  margin: 0;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--yellow);
-  flex: 1;
-}
-
-.pdm-panel-content {
-  flex: 1;
-  padding: 1.5rem;
-  overflow-y: auto;
-}
-
-.pdm-section-info {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.pdm-description {
-  color: var(--secondary);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.pdm-issues {
+.contact-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--teal);
+  padding: 1.5rem 1.75rem;
+  text-decoration: none;
+  color: inherit;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.4rem;
+  transition: border-left-color 0.3s, background 0.2s;
 }
 
-.pdm-issue {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.pdm-issue-toggle {
-  width: 100%;
-  background: var(--tertiary);
-  border: none;
-  color: var(--yellow);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  padding: 0.9rem;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.pdm-issue-toggle:hover {
+.contact-card:hover {
+  border-left-color: var(--yellow);
   background: var(--bg3);
-  color: var(--yellow-dim);
 }
 
-.pdm-issue-toggle.active::after {
-  content: '▼';
-  margin-left: 1rem;
-  font-size: 0.7rem;
-}
-
-.pdm-issue-toggle:not(.active)::after {
-  content: '▶';
-  margin-left: 1rem;
-  font-size: 0.7rem;
-}
-
-.pdm-issue-content {
-  padding: 1rem;
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-}
-
-.pdm-checks,
-.pdm-solutions {
-  margin-bottom: 1rem;
-}
-
-.pdm-checks:last-child,
-.pdm-solutions:last-child {
-  margin-bottom: 0;
-}
-
-.pdm-checks h5,
-.pdm-solutions h5 {
+.contact-card-label {
   font-family: 'Space Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin: 0 0 0.7rem;
-}
-
-.pdm-checks ul,
-.pdm-solutions ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.pdm-checks li,
-.pdm-solutions li {
-  color: var(--content);
-  font-size: 0.8rem;
-  line-height: 1.5;
-  padding: 0.4rem 0 0.4rem 1.3rem;
-  position: relative;
-  margin-bottom: 0.4rem;
-}
-
-.pdm-checks li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
   color: var(--teal);
-  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.pdm-solutions li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--yellow);
-  font-weight: bold;
+.contact-card-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--primary);
+  letter-spacing: 0.01em;
+  word-break: break-word;
 }
 
-@media (width <= 768px) {
-  .pdm-decision-panel {
-    width: 100vw;
-    right: -100vw;
-  }
-
-  .pdm-flow-svg {
-    transform: scale(0.85);
-    transform-origin: top center;
-  }
-
-  .pdm-title {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .pdm-flow-diagram {
-    padding: 1rem;
-    min-height: 500px;
-  }
+.contact-card-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--gray-dim);
 }
 
 /* ============================================================
@@ -1230,7 +963,8 @@ body.story .story-sidebar {
    ============================================================ */
 
 @media (width <= 900px) {
-  .expertise-grid {
+  .expertise-grid,
+  .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -1264,13 +998,15 @@ body.story .story-sidebar {
     position: static;
   }
 
-  .expertise-grid {
+  .expertise-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
   .expertise-section,
   .timeline-inner,
-  .toolkit-cta-section {
+  .toolkit-cta-section,
+  .contact-section {
     padding: 4rem 2rem;
   }
 

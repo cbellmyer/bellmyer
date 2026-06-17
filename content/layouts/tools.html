@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="dark">
+<head>
+    {{- partial "head.html" . }}
+</head>
+<body class="tools" id="top">
+    {{- partial "header.html" . -}}
+
+    <div class="tools-masthead">
+        <div class="tools-masthead-inner">
+            <div>
+                <div class="tools-eyebrow">[ Project Record ]</div>
+                <h1 class="tools-title">The Operator's Toolkit</h1>
+                <div class="tools-tagline">wwtp.tools &middot; Wastewater Operations Reference Platform</div>
+            </div>
+            <div class="tools-masthead-right">
+                <div class="tools-status">
+                    <div class="tools-status-dot"></div>
+                    SYSTEM LIVE
+                </div>
+                <a href="https://wwtp.tools" target="_blank" rel="noopener noreferrer" class="tools-ext-link">
+                    Open wwtp.tools &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="tools-canvas">
+
+        <!-- WHAT IT IS -->
+        <div class="tools-section">
+            <div class="tools-section-hdr">
+                <span class="tools-section-label">[ Project Overview ]</span>
+                <span class="tools-section-title">What Is It?</span>
+            </div>
+            <div class="tools-prose">
+                <p>The Operator's Toolkit is a free, browser-based reference platform for wastewater treatment
+                professionals. No login. No app to install. Open it on a phone in the field or on a workstation
+                in the control room — it works the same either way.</p>
+
+                <p>The toolkit covers four areas: interactive process calculators, operational reference data,
+                field guides, and a process decision matrix for symptom-driven troubleshooting. The calculators
+                alone cover over a dozen common computations across activated sludge, hydraulics, solids handling,
+                and digester operations — the math operators do by hand every shift, collected in one place.</p>
+            </div>
+        </div>
+
+        <!-- WHY I BUILT IT -->
+        <div class="tools-section">
+            <div class="tools-section-hdr">
+                <span class="tools-section-label">[ Origin ]</span>
+                <span class="tools-section-title">Why I Built It</span>
+            </div>
+            <div class="tools-prose">
+                <p>These calculators started as browser bookmarks. During shift work you need the SVI before
+                handoff, the F/M Ratio before making a wasting call, the VSR for your biosolids compliance
+                report. The math itself isn't complicated — but reaching for a textbook or a buried spreadsheet
+                at 2&nbsp;a.m. during an upset wastes time you don't have.</p>
+
+                <p>I built the first few calculators for myself. A few weeks later I was sharing the link with
+                operators on the floor. A few months after that the scope had grown past what made sense to
+                host as a page on a personal site — calculators, a decision matrix, reference tables, field
+                guides. It needed its own home.</p>
+
+                <p>Everything on the site is built the way I'd want to find it: fast to load, readable in
+                bright sunlight on a phone screen, and useful even when you don't remember the exact formula.
+                It's written by an operator, for operators.</p>
+            </div>
+        </div>
+
+        <!-- HOW IT'S BUILT -->
+        <div class="tools-section">
+            <div class="tools-section-hdr">
+                <span class="tools-section-label">[ Technical Architecture ]</span>
+                <span class="tools-section-title">How It's Built</span>
+            </div>
+            <div class="tools-prose">
+                <p>Same stack as this site: Hugo generates the static HTML and Cloudflare Pages serves it
+                globally from the edge — no server to maintain, no database, fast everywhere.</p>
+
+                <p>The interactive calculators are vanilla JavaScript Web Components. No React, no framework,
+                no build pipeline for interactivity — just the native browser platform API. Each calculator
+                is a self-contained custom element that reads inputs and writes results. The live weather
+                widget pulls from Open-Meteo, which is free and requires no API key.</p>
+
+                <p>The interface design is a deliberate choice. It's modeled on Foxboro-style SCADA control
+                panels — charcoal backgrounds, yellow accent values, monospace telemetry labels. The
+                reasoning is simple: operators in the field should feel at home in it.</p>
+
+                <p>Licensing is dual-track: source code (templates, stylesheets, scripts) is released under
+                Mozilla Public License 2.0, which allows reuse under copyleft terms. Content — the
+                operational guidance, field procedures, and reference data — is licensed under
+                CC&nbsp;BY-NC&nbsp;4.0, which protects it from commercial reproduction without attribution.</p>
+            </div>
+
+            <div class="tools-stack-grid">
+                <div class="tools-stack-item">
+                    <div class="tools-stack-label">[ Generator ]</div>
+                    <div class="tools-stack-value">Hugo</div>
+                    <div class="tools-stack-sub">Static site generation</div>
+                </div>
+                <div class="tools-stack-item">
+                    <div class="tools-stack-label">[ Host ]</div>
+                    <div class="tools-stack-value">Cloudflare Pages</div>
+                    <div class="tools-stack-sub">Edge CDN, zero cost</div>
+                </div>
+                <div class="tools-stack-item">
+                    <div class="tools-stack-label">[ Interactivity ]</div>
+                    <div class="tools-stack-value">Web Components</div>
+                    <div class="tools-stack-sub">Vanilla JS, no framework</div>
+                </div>
+                <div class="tools-stack-item">
+                    <div class="tools-stack-label">[ Weather API ]</div>
+                    <div class="tools-stack-value">Open-Meteo</div>
+                    <div class="tools-stack-sub">Free, no key required</div>
+                </div>
+                <div class="tools-stack-item">
+                    <div class="tools-stack-label">[ Code License ]</div>
+                    <div class="tools-stack-value">MPL 2.0</div>
+                    <div class="tools-stack-sub">Copyleft, reuse-friendly</div>
+                </div>
+                <div class="tools-stack-item">
+                    <div class="tools-stack-label">[ Content License ]</div>
+                    <div class="tools-stack-value">CC BY-NC 4.0</div>
+                    <div class="tools-stack-sub">Attribution, non-commercial</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="tools-cta-wrap">
+            <a href="https://wwtp.tools" target="_blank" rel="noopener noreferrer" class="tools-cta">
+                <div>
+                    <div class="tools-cta-label">[ Open Toolkit ]</div>
+                    <div class="tools-cta-title">wwtp.tools</div>
+                    <div class="tools-cta-desc">Process calculators &middot; Decision matrix &middot; Reference data &middot; Field guides</div>
+                </div>
+                <div class="btn-primary" style="white-space: nowrap; flex-shrink: 0;">Open Toolkit &rarr;</div>
+            </a>
+        </div>
+
+    </div>
+
+    {{- partial "footer.html" . -}}
+</body>
+</html>
