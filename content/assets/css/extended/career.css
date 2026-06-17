@@ -232,7 +232,10 @@ body.career {
 
 /* ---- Process Area ---- */
 
-.career-process-area { display: flex; flex-direction: column; }
+.career-process-area {
+  display: flex;
+  flex-direction: column;
+}
 
 /* ---- Process Units ---- */
 
@@ -404,10 +407,22 @@ body.career {
   background: var(--cp-inner);
 }
 
-.telem-value.tv-yellow { color: var(--yellow); background: rgb(232 180 74 / 5%); }
+.telem-value.tv-yellow {
+  color: var(--yellow);
+  background: rgb(232 180 74 / 5%);
+}
+
 .telem-value.tv-green { color: var(--cp-green); }
-.telem-value.tv-dim { color: var(--gray-dim); font-weight: normal; }
-.telem-value.tv-highlight { background: rgb(232 180 74 / 16%); color: var(--yellow); }
+
+.telem-value.tv-dim {
+  color: var(--gray-dim);
+  font-weight: normal;
+}
+
+.telem-value.tv-highlight {
+  background: rgb(232 180 74 / 16%);
+  color: var(--yellow);
+}
 
 /* Process notes panel */
 
@@ -662,7 +677,10 @@ body.career {
   .overview-stat-cell:nth-child(4),
   .overview-stat-cell:nth-child(5) { border-top: 1px solid var(--cp-border); }
 
-  .event-row { grid-template-columns: 1fr 70px; grid-template-rows: auto auto; }
+  .event-row {
+    grid-template-columns: 1fr 70px;
+    grid-template-rows: auto auto;
+  }
 
   .event-time { font-size: 0.4rem; }
 

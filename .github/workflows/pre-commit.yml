@@ -87,7 +87,7 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "0.160.1"
+          hugo-version: "0.163.2"
           extended: true
 
       - name: Cache Hugo resources

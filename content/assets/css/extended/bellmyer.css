@@ -192,12 +192,14 @@ body.home .header #menu .active {
   gap: 1.25rem;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .footer a {
   color: var(--gray-dim);
   text-decoration: none;
   transition: color 0.2s;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .footer a:hover {
   color: var(--teal);
 }
@@ -255,7 +257,7 @@ body.home .header #menu .active {
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   opacity: 0;
-  animation: fadeUp 0.6s ease forwards 0.2s;
+  animation: fade-up 0.6s ease forwards 0.2s;
 }
 
 .hero-name {
@@ -267,7 +269,7 @@ body.home .header #menu .active {
   margin-bottom: 1.5rem;
   color: var(--primary);
   opacity: 0;
-  animation: fadeUp 0.6s ease forwards 0.4s;
+  animation: fade-up 0.6s ease forwards 0.4s;
 }
 
 .hero-name span {
@@ -285,7 +287,7 @@ body.home .header #menu .active {
   max-width: 420px;
   line-height: 1.5;
   opacity: 0;
-  animation: fadeUp 0.6s ease forwards 0.6s;
+  animation: fade-up 0.6s ease forwards 0.6s;
 }
 
 .hero-tags {
@@ -294,7 +296,7 @@ body.home .header #menu .active {
   gap: 0.5rem;
   margin-bottom: 2rem;
   opacity: 0;
-  animation: fadeUp 0.6s ease forwards 0.8s;
+  animation: fade-up 0.6s ease forwards 0.8s;
 }
 
 .hero-tag {
@@ -318,7 +320,7 @@ body.home .header #menu .active {
   display: flex;
   gap: 1rem;
   opacity: 0;
-  animation: fadeUp 0.6s ease forwards 1s;
+  animation: fade-up 0.6s ease forwards 1s;
 }
 
 .btn-primary {
@@ -375,7 +377,7 @@ body.home .header #menu .active {
   width: 100%;
   max-width: 340px;
   opacity: 0;
-  animation: fadeIn 0.8s ease forwards 1.2s;
+  animation: fade-in 0.8s ease forwards 1.2s;
 }
 
 .stat-card {
@@ -880,7 +882,7 @@ body.story {
   font-size: 1.3rem;
   color: var(--primary);
   letter-spacing: 0.01em;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .contact-card-sub {
@@ -941,7 +943,7 @@ body.story .story-sidebar {
    ANIMATIONS
    ============================================================ */
 
-@keyframes fadeUp {
+@keyframes fade-up {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -953,7 +955,7 @@ body.story .story-sidebar {
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }

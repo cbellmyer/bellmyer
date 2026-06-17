@@ -209,13 +209,13 @@ Shows Hugo version, Go version, libsass version, libwebp version.
    - Incremental builds: ~50-100ms
    - Server startup adds ~50-70ms to initial build
 
-3. **No Validation in CI**
+2. **No Validation in CI**
 
    - Only image optimization runs in CI
    - Build validation must be done locally
    - Always test `hugo` command succeeds before committing
 
-4. **Theme is Included in Repository**
+3. **Theme is Included in Repository**
    - Theme is at `themes/hypercat-theme/` (not a submodule)
    - Safe to customize theme files directly if needed
    - Theme is based on PaperMod - see README for documentation

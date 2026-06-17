@@ -81,6 +81,9 @@ repos:
     hooks:
       - id: codespell
         name: Check spelling
+        # 'ges' (GES Division) and 'ingenius' (inGenius Solutions) are
+        # intentional proper nouns in the career content, not typos.
+        args: ['--ignore-words-list=ges,ingenius']
         exclude: ^(content/resources/|content/public/|content/themes/|\.git/)
 
   # GitHub Actions workflow validation
