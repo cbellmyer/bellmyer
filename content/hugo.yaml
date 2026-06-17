@@ -33,7 +33,7 @@ menu:
     - name: Career
       url: /career/
       weight: 10
-    - name: wwtp.tools
+    - name: Toolkit
       url: /tools/
       weight: 15
     - name: GitHub
