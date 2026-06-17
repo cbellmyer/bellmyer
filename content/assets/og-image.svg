@@ -1,0 +1,43 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#2a3140" stroke-width="1" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="#0f1114"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- top accent bar -->
+  <rect x="0" y="0" width="1200" height="6" fill="#e8b44a"/>
+
+  <!-- eyebrow -->
+  <text x="80" y="150" font-family="'Courier New', monospace" font-size="22" letter-spacing="6" fill="#4ab8c8">WASTEWATER RECLAMATION · GIS · MARYLAND 5A LICENSED</text>
+
+  <!-- name -->
+  <text x="76" y="290" font-family="'Arial Narrow', 'Barlow Condensed', sans-serif" font-weight="900" font-size="150" letter-spacing="-2" fill="#e8eaf0">Chris</text>
+  <text x="76" y="430" font-family="'Arial Narrow', 'Barlow Condensed', sans-serif" font-weight="900" font-size="150" letter-spacing="-2" fill="#e8b44a">Bellmyer</text>
+
+  <!-- hook -->
+  <text x="80" y="510" font-family="'Arial', sans-serif" font-weight="300" font-size="34" fill="#8892a0">Operator. Cartographer. Builder.</text>
+  <text x="80" y="555" font-family="'Arial', sans-serif" font-weight="300" font-size="34" fill="#8892a0">Protecting water from the bayou to the Bay.</text>
+
+  <!-- right side status panel -->
+  <g transform="translate(840, 150)">
+    <rect x="0" y="0" width="280" height="90" fill="#161a1f" stroke="#2a3140" stroke-width="1"/>
+    <text x="20" y="32" font-family="'Courier New', monospace" font-size="15" letter-spacing="3" fill="#546878">[ LICENSE ]</text>
+    <text x="20" y="68" font-family="'Arial Narrow', sans-serif" font-weight="700" font-size="30" fill="#e8b44a">MD WW 5A</text>
+
+    <rect x="0" y="110" width="280" height="90" fill="#161a1f" stroke="#2a3140" stroke-width="1"/>
+    <text x="20" y="142" font-family="'Courier New', monospace" font-size="15" letter-spacing="3" fill="#546878">[ GRADE ]</text>
+    <text x="20" y="178" font-family="'Arial Narrow', sans-serif" font-weight="700" font-size="30" fill="#40e060">OPERATOR III</text>
+
+    <rect x="0" y="220" width="280" height="90" fill="#161a1f" stroke="#2a3140" stroke-width="1"/>
+    <text x="20" y="252" font-family="'Courier New', monospace" font-size="15" letter-spacing="3" fill="#546878">[ SERVICE ]</text>
+    <text x="20" y="288" font-family="'Arial Narrow', sans-serif" font-weight="700" font-size="30" fill="#e8eaf0">10+ YEARS</text>
+  </g>
+
+  <!-- footer telemetry line -->
+  <text x="840" y="590" font-family="'Courier New', monospace" font-size="16" letter-spacing="2" fill="#4a5568">bellmyer.com</text>
+</svg>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="dark">
+<head>
+    {{- partial "head.html" . }}
+</head>
+<body class="notfound" id="top">
+    {{- partial "header.html" . -}}
+
+    <div class="nf-wrap">
+        <div class="nf-panel">
+            <div class="nf-panel-hdr">
+                <div class="nf-alarm-dot"></div>
+                <span class="nf-panel-hdr-text">PROCESS ALARM &middot; UNACKNOWLEDGED</span>
+                <span class="nf-panel-hdr-code" id="nf-time">--:--:--</span>
+            </div>
+
+            <div class="nf-body">
+                <div class="nf-code">404</div>
+                <div class="nf-eyebrow">[ Signal Lost ]</div>
+                <h1 class="nf-title">No Flow at This Outfall</h1>
+                <p class="nf-text">The page you requested isn't in service. It may have been decommissioned, rerouted, or never existed on this system. Let's get you back to a monitored channel.</p>
+
+                <div class="nf-telem">
+                    <div class="nf-telem-row">
+                        <span class="nf-telem-label">Requested Path</span>
+                        <span class="nf-telem-value nf-val-red" id="nf-path">/unknown</span>
+                    </div>
+                    <div class="nf-telem-row">
+                        <span class="nf-telem-label">Status</span>
+                        <span class="nf-telem-value nf-val-red">NOT FOUND</span>
+                    </div>
+                    <div class="nf-telem-row">
+                        <span class="nf-telem-label">Recommended Action</span>
+                        <span class="nf-telem-value nf-val-yellow">RETURN TO HOME</span>
+                    </div>
+                </div>
+
+                <div class="nf-actions">
+                    <a href="/" class="btn-primary">&larr; Return Home</a>
+                    <a href="/story/" class="btn-secondary">My Story</a>
+                    <a href="/career/" class="btn-secondary">Career</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{- partial "footer.html" . -}}
+
+    <script>
+    (function () {
+        var pathEl = document.getElementById('nf-path');
+        if (pathEl) pathEl.textContent = window.location.pathname || '/unknown';
+        function tick() {
+            var now = new Date();
+            var t = now.getHours().toString().padStart(2, '0') + ':' +
+                    now.getMinutes().toString().padStart(2, '0') + ':' +
+                    now.getSeconds().toString().padStart(2, '0');
+            var el = document.getElementById('nf-time');
+            if (el) el.textContent = t;
+        }
+        tick();
+        setInterval(tick, 1000);
+    }());
+    </script>
+</body>
+</html>

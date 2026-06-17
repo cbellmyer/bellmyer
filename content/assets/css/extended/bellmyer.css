@@ -187,6 +187,11 @@ body.home .header #menu .active {
   letter-spacing: 0.06em;
 }
 
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
 .footer a {
   color: var(--gray-dim);
   text-decoration: none;
@@ -828,6 +833,64 @@ body.story {
 }
 
 /* ============================================================
+   CONTACT
+   ============================================================ */
+
+.contact-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.contact-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--teal);
+  padding: 1.5rem 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: border-left-color 0.3s, background 0.2s;
+}
+
+.contact-card:hover {
+  border-left-color: var(--yellow);
+  background: var(--bg3);
+}
+
+.contact-card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--teal);
+  text-transform: uppercase;
+}
+
+.contact-card-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--primary);
+  letter-spacing: 0.01em;
+  word-break: break-word;
+}
+
+.contact-card-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--gray-dim);
+}
+
+/* ============================================================
    INNER PAGE HERO (Story, Career, etc.)
    ============================================================ */
 
@@ -900,7 +963,8 @@ body.story .story-sidebar {
    ============================================================ */
 
 @media (width <= 900px) {
-  .expertise-grid {
+  .expertise-grid,
+  .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -934,13 +998,15 @@ body.story .story-sidebar {
     position: static;
   }
 
-  .expertise-grid {
+  .expertise-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
   .expertise-section,
   .timeline-inner,
-  .toolkit-cta-section {
+  .toolkit-cta-section,
+  .contact-section {
     padding: 4rem 2rem;
   }
 
